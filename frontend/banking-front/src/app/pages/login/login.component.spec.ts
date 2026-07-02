@@ -18,7 +18,13 @@ describe('LoginComponent', () => {
   let authStub: { setToken: jest.Mock; login: jest.Mock };
   let harness: RouterTestingHarness;
 
+  const analyticsAdapterSpy = {
+    trackEvent: jest.fn(),
+    trackPageView: jest.fn(),
+  };
+
   beforeEach(async () => {
+    jest.clearAllMocks();
     authStub = {
       setToken: jest.fn(),
       login: jest
@@ -35,10 +41,7 @@ describe('LoginComponent', () => {
           { path: 'login', component: LoginComponent },
         ]),
         { provide: AuthService, useValue: authStub },
-        {
-          provide: AnalyticsAdapter,
-          useValue: { trackEvent: jest.fn(), trackPageView: jest.fn() },
-        },
+        { provide: AnalyticsAdapter, useValue: analyticsAdapterSpy },
       ],
     }).compileComponents();
 

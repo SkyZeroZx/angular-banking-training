@@ -8,19 +8,24 @@ describe('ContentComponent', () => {
   let component: ContentComponent;
   let fixture: ComponentFixture<ContentComponent>;
 
+  const authServiceSpy = {
+    user: jest.fn(() => null),
+    logout: jest.fn(),
+  };
+  const analyticsAdapterSpy = {
+    trackEvent: jest.fn(),
+    trackPageView: jest.fn(),
+  };
+
   beforeEach(async () => {
+    jest.clearAllMocks();
+
     await TestBed.configureTestingModule({
       imports: [ContentComponent],
       providers: [
         provideRouter([]),
-        {
-          provide: AuthService,
-          useValue: { user: () => null, logout: jest.fn() },
-        },
-        {
-          provide: AnalyticsAdapter,
-          useValue: { trackEvent: jest.fn(), trackPageView: jest.fn() },
-        },
+        { provide: AuthService, useValue: authServiceSpy },
+        { provide: AnalyticsAdapter, useValue: analyticsAdapterSpy },
       ],
     }).compileComponents();
 

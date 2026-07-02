@@ -23,6 +23,10 @@ describe('MovementCreateComponent', () => {
 
   const movementServiceSpy = { create: jest.fn() };
   const toastSpy = { success: jest.fn() };
+  const analyticsAdapterSpy = {
+    trackEvent: jest.fn(),
+    trackPageView: jest.fn(),
+  };
 
   beforeEach(async () => {
     jest.clearAllMocks();
@@ -34,10 +38,7 @@ describe('MovementCreateComponent', () => {
         provideRouter([{ path: 'movimientos', redirectTo: '' }]),
         { provide: MovementService, useValue: movementServiceSpy },
         { provide: ToastService, useValue: toastSpy },
-        {
-          provide: AnalyticsAdapter,
-          useValue: { trackEvent: jest.fn(), trackPageView: jest.fn() },
-        },
+        { provide: AnalyticsAdapter, useValue: analyticsAdapterSpy },
       ],
     }).compileComponents();
 

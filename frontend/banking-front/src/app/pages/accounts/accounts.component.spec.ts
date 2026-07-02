@@ -31,6 +31,10 @@ describe('AccountsComponent', () => {
     delete: jest.fn(),
   };
   const toastSpy = { success: jest.fn(), error: jest.fn() };
+  const analyticsAdapterSpy = {
+    trackEvent: jest.fn(),
+    trackPageView: jest.fn(),
+  };
 
   beforeEach(async () => {
     jest.clearAllMocks();
@@ -43,10 +47,7 @@ describe('AccountsComponent', () => {
         provideRouter([]),
         { provide: AccountService, useValue: accountServiceSpy },
         { provide: ToastService, useValue: toastSpy },
-        {
-          provide: AnalyticsAdapter,
-          useValue: { trackEvent: jest.fn(), trackPageView: jest.fn() },
-        },
+        { provide: AnalyticsAdapter, useValue: analyticsAdapterSpy },
       ],
     }).compileComponents();
 

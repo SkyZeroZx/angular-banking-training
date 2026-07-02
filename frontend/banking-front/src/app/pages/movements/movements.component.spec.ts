@@ -32,6 +32,10 @@ describe('MovementsComponent', () => {
     delete: jest.fn(),
   };
   const toastSpy = { success: jest.fn(), error: jest.fn() };
+  const analyticsAdapterSpy = {
+    trackEvent: jest.fn(),
+    trackPageView: jest.fn(),
+  };
 
   beforeEach(async () => {
     jest.clearAllMocks();
@@ -44,10 +48,7 @@ describe('MovementsComponent', () => {
         provideRouter([]),
         { provide: MovementService, useValue: movementServiceSpy },
         { provide: ToastService, useValue: toastSpy },
-        {
-          provide: AnalyticsAdapter,
-          useValue: { trackEvent: jest.fn(), trackPageView: jest.fn() },
-        },
+        { provide: AnalyticsAdapter, useValue: analyticsAdapterSpy },
       ],
     }).compileComponents();
 

@@ -38,6 +38,10 @@ describe('AccountEditComponent', () => {
       .mockReturnValue(of(pagedResponse([], { size: 200, totalPages: 0 }))),
   };
   const toastSpy = { success: jest.fn() };
+  const analyticsAdapterSpy = {
+    trackEvent: jest.fn(),
+    trackPageView: jest.fn(),
+  };
 
   let harness: RouterTestingHarness;
 
@@ -58,10 +62,7 @@ describe('AccountEditComponent', () => {
         { provide: AccountService, useValue: accountServiceSpy },
         { provide: ClientService, useValue: clientServiceSpy },
         { provide: ToastService, useValue: toastSpy },
-        {
-          provide: AnalyticsAdapter,
-          useValue: { trackEvent: jest.fn(), trackPageView: jest.fn() },
-        },
+        { provide: AnalyticsAdapter, useValue: analyticsAdapterSpy },
       ],
     }).compileComponents();
 

@@ -46,13 +46,21 @@ describe('ReportsComponent', () => {
   let fixture: ComponentFixture<ReportsComponent>;
   let component: ReportsComponent;
 
+  const clientServiceSpy = {
+    getAll: jest.fn(),
+  };
   const reportServiceSpy = {
     getReport: jest.fn(),
     getReportPdf: jest.fn(),
   };
+  const analyticsAdapterSpy = {
+    trackEvent: jest.fn(),
+    trackPageView: jest.fn(),
+  };
 
   beforeEach(async () => {
     jest.clearAllMocks();
+    clientServiceSpy.getAll.mockReturnValue(of(mockClients));
     reportServiceSpy.getReport.mockReturnValue(of(mockPagedRows));
     reportServiceSpy.getReportPdf.mockReturnValue(of({ base64: 'abc123' }));
 
@@ -60,14 +68,8 @@ describe('ReportsComponent', () => {
       imports: [ReportsComponent],
       providers: [
         { provide: ReportService, useValue: reportServiceSpy },
-        {
-          provide: ClientService,
-          useValue: { getAll: jest.fn().mockReturnValue(of(mockClients)) },
-        },
-        {
-          provide: AnalyticsAdapter,
-          useValue: { trackEvent: jest.fn(), trackPageView: jest.fn() },
-        },
+        { provide: ClientService, useValue: clientServiceSpy },
+        { provide: AnalyticsAdapter, useValue: analyticsAdapterSpy },
       ],
     }).compileComponents();
 

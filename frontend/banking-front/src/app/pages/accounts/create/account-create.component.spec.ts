@@ -22,6 +22,10 @@ describe('AccountCreateComponent', () => {
 
   const accountServiceSpy = { create: jest.fn() };
   const toastSpy = { success: jest.fn() };
+  const analyticsAdapterSpy = {
+    trackEvent: jest.fn(),
+    trackPageView: jest.fn(),
+  };
 
   beforeEach(async () => {
     jest.clearAllMocks();
@@ -33,10 +37,7 @@ describe('AccountCreateComponent', () => {
         provideRouter([{ path: 'cuentas', redirectTo: '' }]),
         { provide: AccountService, useValue: accountServiceSpy },
         { provide: ToastService, useValue: toastSpy },
-        {
-          provide: AnalyticsAdapter,
-          useValue: { trackEvent: jest.fn(), trackPageView: jest.fn() },
-        },
+        { provide: AnalyticsAdapter, useValue: analyticsAdapterSpy },
       ],
     }).compileComponents();
 
