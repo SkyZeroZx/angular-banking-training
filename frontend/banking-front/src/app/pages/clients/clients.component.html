@@ -9,9 +9,6 @@
       placeholder="Buscar por nombre o identificación"
       aria-label="Buscar clientes"
     />
-    <a btn variant="primary" routerLink="nuevo"
-      ><app-icon name="add" /> Nuevo</a
-    >
   </div>
 
   <app-data-table
@@ -99,13 +96,6 @@
       let-row
     >
       <div class="actions">
-        <a
-          btn
-          variant="primary"
-          size="sm"
-          [routerLink]="[row.clienteId, 'editar']"
-          ><app-icon name="edit" />
-        </a>
         <button
           btn
           variant="danger"

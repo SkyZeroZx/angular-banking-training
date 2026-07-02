@@ -16,7 +16,6 @@ import {
   debounceTime,
   distinctUntilChanged,
 } from 'rxjs';
-import { RouterLink } from '@angular/router';
 import { ClientService } from '@core/services/client/client.service';
 import { ClientResponse } from '@core/interface';
 import { ButtonComponent } from '@shared/ui/button/button.component';
@@ -34,7 +33,6 @@ import { IconComponent } from '@shared/ui/icon/icon.component';
     FormsModule,
     ButtonComponent,
     ConfirmDialogDirective,
-    RouterLink,
     DataTableComponent,
     TableColumnDirective,
     ClickTrackingDirective,
