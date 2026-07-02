@@ -18,7 +18,7 @@ Esta rama nace desde `workshop/05-testing-http-interceptors` y cierra el worksho
 3. 28-44 min: `login.component.spec.ts`: navegacion a `/login`, submit exitoso y error de auth.
 4. 44-62 min: `account-edit.component.spec.ts` y `client-edit.component.spec.ts`: route params + `withComponentInputBinding()`.
 5. 62-76 min: create/list page specs: `provideRouter`, providers fake y asserts de comportamiento.
-6. 76-84 min: layout specs: `content`, `header`, `side-bar` y `footer`.
+6. 76-84 min: layout specs: `layout/content/content.component.spec.ts`, `components/header`, `components/side-bar` y `components/footer`.
 7. 84-90 min: ejercicio: agregar redirect o caso de param invalido.
 
 ## Validacion
