@@ -1,33 +1,34 @@
-# Workshop 01 - Shell, Routing y Signals
+# Workshop 02 - UI propia, CVA y Formularios
 
-Esta rama es el primer corte ejecutable del workshop. La app tiene solo login, layout autenticado y listado de clientes con HTML simple.
+Esta rama nace desde `workshop/01-shell-routing-signals` y agrega el segundo bloque real de construccion.
 
-## Alcance
+## Codigo agregado en esta sesion
 
-- Bootstrap standalone con `ApplicationConfig`.
-- Rutas lazy con `loadComponent`.
-- Guards de acceso publico/privado.
-- Layout autenticado con header, sidebar y footer.
-- Lista de clientes con `signal`, `computed`, `linkedSignal`, `toSignal` y `toObservable`.
-- Tabla HTML simple como UI de lectura.
-- Smoke test minimo de arranque.
+- UI compartida: button, icon, data table, paginator, modal, dialog, toast y control errors.
+- Controles CVA: input, select y checkbox.
+- Formularios compuestos: cliente, cuenta y movimiento.
+- Selects remotos paginados: cliente y cuenta.
+- Rutas de crear/editar clientes, cuentas y movimientos.
+- Servicios de cuenta y movimiento.
+- `withComponentInputBinding()` para rutas de edicion.
 
-## Fuera de este corte
+## Aun no existe en esta rama
 
-- Formularios de creacion/edicion.
-- CVA y controles custom.
-- UI compartida.
 - Reportes.
-- Sesiones avanzadas de testing.
+- Error interceptor.
+- Global error handler.
+- Analytics/click tracking.
+- Specs avanzados; solo queda smoke test de app.
 
 ## Guion de 1h 30m
 
-1. 0-10 min: dominio y ejecucion local.
-2. 10-25 min: `app.config.ts` y providers globales.
-3. 25-40 min: `app.routes.ts`, lazy loading y guards.
-4. 40-60 min: `clients.component.ts` y estado reactivo local.
-5. 60-75 min: `DataTableComponent` y paginacion como contrato UI.
-6. 75-90 min: ejercicio: agregar un filtro visible o cambiar page size.
+1. 0-10 min: comparar rama 01 vs 02 y ver que ahora aparece una UI propia.
+2. 10-30 min: `InputFieldComponent` como CVA.
+3. 30-45 min: `SelectFieldComponent`, busqueda y teclado.
+4. 45-60 min: formularios compuestos con `NG_VALUE_ACCESSOR` y `NG_VALIDATORS`.
+5. 60-72 min: selects paginados con `BasePagedSelectComponent`.
+6. 72-82 min: tabla/paginador con templates.
+7. 82-90 min: ejercicio: agregar un campo nuevo al formulario.
 
 ## Validacion
 
@@ -36,9 +37,3 @@ cd frontend/banking-front
 npm test -- --runInBand
 npm run build
 ```
-
-## Base didactica
-
-- Scaffolding: soporte alto al inicio y retiro gradual.
-- "I do, We do, You do": demo, practica guiada y ejercicio corto.
-- Orden basado en docs Angular de routing, signals y component testing.

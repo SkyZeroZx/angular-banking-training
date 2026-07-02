@@ -1,4 +1,4 @@
-<nav class="sidebar" role="navigation" aria-label="Menu principal">
+<nav class="sidebar" role="navigation" aria-label="Menú principal">
   <ul class="sidebar__list">
     @for (link of links; track link.path) {
       <li class="sidebar__item">
@@ -7,6 +7,7 @@
           [routerLink]="link.path"
           routerLinkActive="sidebar__link--active"
         >
+          <app-icon [name]="link.icon" />
           {{ link.label }}
         </a>
       </li>

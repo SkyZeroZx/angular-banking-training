@@ -26,6 +26,62 @@ export const appRoutes: Route[] = [
             (m) => m.ClientsComponent,
           ),
       },
+      {
+        path: 'clientes/nuevo',
+        title: 'Banking Frontend | Nuevo Cliente',
+        loadComponent: () =>
+          import('@app/pages/clients/create/client-create.component').then(
+            (m) => m.ClientCreateComponent,
+          ),
+      },
+      {
+        path: 'clientes/:id/editar',
+        title: 'Banking Frontend | Editar Cliente',
+        loadComponent: () =>
+          import('@app/pages/clients/edit/client-edit.component').then(
+            (m) => m.ClientEditComponent,
+          ),
+      },
+      {
+        path: 'cuentas',
+        title: 'Banking Frontend | Cuentas',
+        loadComponent: () =>
+          import('@app/pages/accounts/accounts.component').then(
+            (m) => m.AccountsComponent,
+          ),
+      },
+      {
+        path: 'cuentas/nuevo',
+        title: 'Banking Frontend | Nueva Cuenta',
+        loadComponent: () =>
+          import('@app/pages/accounts/create/account-create.component').then(
+            (m) => m.AccountCreateComponent,
+          ),
+      },
+      {
+        path: 'cuentas/:id/editar',
+        title: 'Banking Frontend | Editar Cuenta',
+        loadComponent: () =>
+          import('@app/pages/accounts/edit/account-edit.component').then(
+            (m) => m.AccountEditComponent,
+          ),
+      },
+      {
+        path: 'movimientos',
+        title: 'Banking Frontend | Movimientos',
+        loadComponent: () =>
+          import('@app/pages/movements/movements.component').then(
+            (m) => m.MovementsComponent,
+          ),
+      },
+      {
+        path: 'movimientos/nuevo',
+        title: 'Banking Frontend | Nuevo Movimiento',
+        loadComponent: () =>
+          import('@app/pages/movements/create/movement-create.component').then(
+            (m) => m.MovementCreateComponent,
+          ),
+      },
     ],
   },
   { path: '**', redirectTo: '' },

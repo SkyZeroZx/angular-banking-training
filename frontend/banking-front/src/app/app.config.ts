@@ -1,5 +1,5 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { appRoutes } from './app.routes';
 import {
   provideHttpClient,
@@ -7,10 +7,12 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { authInterceptor } from '@core/interceptors/auth.interceptor';
+import { provideToast } from '@shared/ui/toast/toast.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(appRoutes),
+    provideRouter(appRoutes, withComponentInputBinding()),
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
+    provideToast(),
   ],
 };

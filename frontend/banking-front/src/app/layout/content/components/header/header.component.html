@@ -5,8 +5,14 @@
     @if (user(); as u) {
       <span class="header__user">{{ u.sub }}</span>
     }
-    <button type="button" class="header__logout" (click)="logout()">
-      Salir
+    <button
+      btn
+      variant="secondary"
+      size="sm"
+      (click)="logout()"
+      aria-label="Cerrar sesión"
+    >
+      <app-icon name="logout" />
     </button>
   </div>
 </header>

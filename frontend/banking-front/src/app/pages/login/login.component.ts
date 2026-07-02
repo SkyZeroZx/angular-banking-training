@@ -4,14 +4,28 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth/auth.service';
 import { AuthRequest, FormType } from '@core/interface';
+import { ButtonComponent } from '@shared/ui/button/button.component';
+import { ControlErrorModule } from '@shared/ui/control-error/control-error.module';
+import { InputFieldComponent } from '@shared/ui/form-field/input-field/input-field.component';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    ButtonComponent,
+    ControlErrorModule,
+    InputFieldComponent,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,7 +59,7 @@ export class LoginComponent {
       },
       error: () => {
         this.loading.set(false);
-        this.error.set('Credenciales invalidas. Intente nuevamente.');
+        this.error.set('Credenciales inválidas. Intente nuevamente.');
       },
     });
   }

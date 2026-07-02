@@ -1,7 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '@env/environment';
-import { ClientResponse, PagedResponse, PageParams } from '@core/interface';
+import {
+  ClientRequest,
+  ClientResponse,
+  PagedResponse,
+  PageParams,
+} from '@core/interface';
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
@@ -17,5 +22,28 @@ export class ClientService {
     return this.http.get<PagedResponse<ClientResponse>>(this.baseUrl, {
       params: httpParams,
     });
+  }
+
+  getById(clienteId: string) {
+    return this.http.get<ClientResponse>(`${this.baseUrl}/${clienteId}`);
+  }
+
+  create(body: ClientRequest) {
+    return this.http.post<ClientResponse>(this.baseUrl, body);
+  }
+
+  update(clienteId: string, body: ClientRequest) {
+    return this.http.put<ClientResponse>(`${this.baseUrl}/${clienteId}`, body);
+  }
+
+  patch(clienteId: string, body: Partial<ClientRequest>) {
+    return this.http.patch<ClientResponse>(
+      `${this.baseUrl}/${clienteId}`,
+      body,
+    );
+  }
+
+  delete(clienteId: string) {
+    return this.http.delete<void>(`${this.baseUrl}/${clienteId}`);
   }
 }

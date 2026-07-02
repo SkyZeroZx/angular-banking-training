@@ -1,7 +1,7 @@
 <div class="login">
   <div class="login__card">
     <h1 class="login__title">BANCO</h1>
-    <p class="login__subtitle">Iniciar sesion</p>
+    <p class="login__subtitle">Iniciar sesión</p>
 
     @if (error(); as err) {
       <p class="login__error" role="alert">{{ err }}</p>
@@ -9,27 +9,32 @@
 
     <form class="login__form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div>
-        <label for="username">Usuario</label>
-        <input
-          id="username"
-          type="text"
+        <app-input-field
+          label="Usuario"
           formControlName="username"
           autocomplete="username"
           placeholder="Ingrese su usuario"
-        >
+        />
       </div>
       <div>
-        <label for="password">Password</label>
-        <input
-          id="password"
+        <app-input-field
+          label="Contraseña"
           type="password"
           formControlName="password"
           autocomplete="current-password"
-          placeholder="Ingrese su password"
-        >
+          placeholder="Ingrese su contraseña"
+        />
       </div>
 
-      <button type="submit" [disabled]="loading()">Ingresar</button>
+      <button
+        btn
+        variant="primary"
+        size="lg"
+        type="submit"
+        [loading]="loading()"
+      >
+        Ingresar
+      </button>
     </form>
   </div>
 </div>
