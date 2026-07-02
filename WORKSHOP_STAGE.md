@@ -23,11 +23,11 @@ Esta rama es el primer corte ejecutable del workshop. La app tiene solo login, l
 ## Guion de 1h 30m
 
 1. 0-10 min: dominio y ejecucion local.
-2. 10-25 min: `app.config.ts` y providers globales.
-3. 25-40 min: `app.routes.ts`, lazy loading y guards.
-4. 40-60 min: `clients.component.ts` y estado reactivo local.
-5. 60-75 min: `DataTableComponent` y paginacion como contrato UI.
-6. 75-90 min: ejercicio: agregar un filtro visible o cambiar page size.
+2. 10-22 min: `main.ts`, `app.ts` y `app.config.ts`: bootstrap standalone, `provideRouter` y `provideHttpClient`.
+3. 22-38 min: `app.routes.ts` y `auth.guard.ts`: login publico, shell protegido y lazy `loadComponent`.
+4. 38-52 min: `login.component.ts`: primer reactive form con inputs HTML nativos y submit contra `AuthService`.
+5. 52-75 min: `clients.component.ts` y `clients.component.html`: signals, RxJS interop, busqueda y tabla HTML simple.
+6. 75-90 min: ejercicio: agregar una columna visible o un filtro simple en `ClientsComponent`.
 
 ## Validacion
 
