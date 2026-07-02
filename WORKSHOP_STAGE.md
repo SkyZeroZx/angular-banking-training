@@ -20,13 +20,13 @@ Esta rama nace desde `workshop/02-ui-cva-forms` y completa la app Angular funcio
 
 ## Guion de 1h 30m
 
-1. 0-15 min: servicios HTTP y frontera componente/servicio.
-2. 15-30 min: reportes y normalizacion de backend.
-3. 30-45 min: auth + error interceptors.
-4. 45-60 min: `HttpContext` para saltar manejo global.
-5. 60-72 min: `GlobalErrorHandler`.
-6. 72-82 min: analytics strategy tree-shakeable.
-7. 82-90 min: ejercicio: agregar otra strategy o status de error.
+1. 0-12 min: comparar rama 02 vs 03: aparece `ReportsComponent` y capa transversal final.
+2. 12-28 min: `ReportService`: parametros, descarga y normalizacion de respuestas de reporte.
+3. 28-42 min: `ReportsComponent`: form de filtros, request de reporte y link de descarga.
+4. 42-56 min: `authInterceptor`, `errorInterceptor` y `SKIP_ERROR_INTERCEPTOR`: protocolo HTTP centralizado.
+5. 56-68 min: `GlobalErrorHandler`: errores inesperados fuera del flujo HTTP normal.
+6. 68-82 min: `AnalyticsAdapter`, `provideAnalytics()` y `ClickTrackingDirective`: strategy por DI.
+7. 82-90 min: ejercicio: agregar un status al `errorInterceptor` o una strategy nueva de analytics.
 
 ## Validacion
 
