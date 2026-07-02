@@ -10,7 +10,7 @@ Esta rama nace desde `workshop/02-ui-cva-forms` y completa la app Angular funcio
 - `GlobalErrorHandler`.
 - Analytics por strategy con `provideAnalytics()` y `withGtag()`.
 - `ClickTrackingDirective`.
-- App config final con interceptores, service worker, toast, error handler y analytics.
+- App config final con interceptores, toast, error handler y analytics.
 
 ## Aun no existe en esta rama
 
