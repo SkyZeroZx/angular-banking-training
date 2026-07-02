@@ -17,6 +17,8 @@
         btn
         variant="primary"
         type="submit"
+        appClickTracking
+        [eventName]="'client_update'"
         [loading]="saving()"
       >
         <app-icon name="save" /> Guardar
