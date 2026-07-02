@@ -1,0 +1,21 @@
+<section class="page">
+  <h1 class="page__title">Nuevo Cliente</h1>
+  <form (ngSubmit)="onSubmit()">
+    <app-client-form [formControl]="createClientForm" />
+    <div class="page__actions">
+      <a btn variant="secondary" routerLink="/clientes"
+        ><app-icon name="close" /> Cancelar</a
+      >
+      <button
+        btn
+        variant="primary"
+        type="submit"
+        appClickTracking
+        [eventName]="'client_create'"
+        [loading]="saving()"
+      >
+        <app-icon name="save" /> Guardar
+      </button>
+    </div>
+  </form>
+</section>

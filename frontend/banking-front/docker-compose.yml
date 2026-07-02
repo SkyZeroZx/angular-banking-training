@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: banking-local-front
+    container_name: banking-local-front
+    restart: unless-stopped
+    ports:
+      - '4200:80'
+    environment:
+      # URL of the API gateway — override this when deploying
+      BACKEND_URL: http://localhost:8080
+    networks:
+      - banking-local-net
+
+networks:
+  banking-local-net:
+    driver: bridge

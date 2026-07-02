@@ -1,0 +1,150 @@
+<section class="page">
+  <h1 class="page__title">Reportes</h1>
+
+  <form
+    class="filters"
+    [formGroup]="form"
+    (ngSubmit)="search()"
+    role="search"
+    aria-label="Filtros de reporte"
+  >
+    <div>
+      <app-input-field
+        type="date"
+        label="Desde"
+        formControlName="fechaInicio"
+      />
+    </div>
+    <div>
+      <app-input-field type="date" label="Hasta" formControlName="fechaFin" />
+    </div>
+    <div class="filters__client-row">
+      <app-client-select formControlName="cliente" placeholder="Todos" />
+
+      <label class="filters__todos">
+        <input
+          type="checkbox"
+          formControlName="todosClientes"
+          aria-label="Consultar todos los clientes"
+        />
+        Todos los clientes
+      </label>
+    </div>
+
+    <div class="filters__actions">
+      <button
+        btn
+        variant="primary"
+        type="submit"
+        appClickTracking
+        [eventName]="'report_search'"
+        [loading]="loading()"
+      >
+        <app-icon name="search" /> Buscar
+      </button>
+      <button
+        btn
+        variant="secondary"
+        type="button"
+        [disabled]="downloading() || rows() === null"
+        (click)="downloadPdf()"
+      >
+        <app-icon name="picture_as_pdf" />
+        {{ downloading() ? 'Descargando...' : 'Descargar PDF' }}
+      </button>
+    </div>
+  </form>
+
+  <app-data-table
+    [rows]="displayRows()"
+    [loading]="loading()"
+    [totalElements]="totalElements()"
+    [(page)]="page"
+    [size]="pageSize"
+    [emptyMessage]="emptyMessage()"
+    ariaLabel="Resultado del reporte"
+  >
+    <ng-template
+      appTableColumn="fecha"
+      header="Fecha"
+      [appTableColumnOf]="displayRows()"
+      let-row
+    >
+      {{ row.fecha }}
+    </ng-template>
+
+    <ng-template
+      appTableColumn="cliente"
+      header="Cliente"
+      [appTableColumnOf]="displayRows()"
+      let-row
+    >
+      {{ row.cliente }}
+    </ng-template>
+
+    <ng-template
+      appTableColumn="numeroCuenta"
+      header="Cuenta"
+      [appTableColumnOf]="displayRows()"
+      let-row
+    >
+      {{ row.numeroCuenta }}
+    </ng-template>
+
+    <ng-template
+      appTableColumn="tipo"
+      header="Tipo"
+      [appTableColumnOf]="displayRows()"
+      let-row
+    >
+      {{ row.tipo }}
+    </ng-template>
+
+    <ng-template
+      appTableColumn="saldoInicial"
+      header="Saldo Inicial"
+      [appTableColumnOf]="displayRows()"
+      let-row
+    >
+      {{ row.saldoInicial | number: '1.2-2' }}
+    </ng-template>
+
+    <ng-template
+      appTableColumn="movimiento"
+      header="Movimiento"
+      [appTableColumnOf]="displayRows()"
+      let-row
+    >
+      <span
+        [class.text--credit]="row.movimiento >= 0"
+        [class.text--debit]="row.movimiento < 0"
+      >
+        {{ row.movimiento | number: '1.2-2' }}
+      </span>
+    </ng-template>
+
+    <ng-template
+      appTableColumn="saldoDisponible"
+      header="Saldo Disponible"
+      [appTableColumnOf]="displayRows()"
+      let-row
+    >
+      {{ row.saldoDisponible | number: '1.2-2' }}
+    </ng-template>
+
+    <ng-template
+      appTableColumn="estado"
+      header="Estado"
+      [appTableColumnOf]="displayRows()"
+      let-row
+    >
+      <span
+        class="badge"
+        [class.badge--active]="row.estado"
+        [class.badge--inactive]="!row.estado"
+      >
+        {{ row.estado ? 'Activo' : 'Inactivo' }}
+      </span>
+    </ng-template>
+  </app-data-table>
+</section>

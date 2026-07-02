@@ -1,0 +1,66 @@
+server:
+  port: ${SERVER_PORT:8090}
+
+spring:
+  application:
+    name: banking-service
+  datasource:
+    url: ${DB_URL:jdbc:h2:mem:banking-service;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:create-drop}
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: ${HIBERNATE_DIALECT:org.hibernate.dialect.H2Dialect}
+        format_sql: true
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      timeout: 2000ms
+      connect-timeout: 1000ms
+    web:
+      pageable:
+        one-indexed-parameters: true
+  cache:
+    type: simple
+    cache-names: clients,clients-list,accounts,accounts-list,transactions,transactions-list
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+banking:
+  daily-withdrawal-limit: ${DAILY_WITHDRAWAL_LIMIT:1000}
+
+app:
+  seed:
+    enabled: ${APP_SEED_ENABLED:true}
+
+cache:
+  ttl:
+    clients:      ${CACHE_TTL_CLIENTS:PT10M}
+    accounts:     ${CACHE_TTL_ACCOUNTS:PT10M}
+    transactions: ${CACHE_TTL_TRANSACTIONS:PT5M}
+    list:         ${CACHE_TTL_LIST:PT2M}
+
+management:
+  health:
+    redis:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env
+  endpoint:
+    health:
+      show-details: when-authorized
+
+logging:
+  level:
+    com.localbank.banking: INFO
+    org.hibernate.SQL: WARN

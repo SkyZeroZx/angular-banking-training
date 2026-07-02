@@ -1,0 +1,53 @@
+<div
+  class="confirm-dialog__overlay"
+  data-testid="dialog-component"
+  role="alertdialog"
+  aria-modal="true"
+  aria-labelledby="confirm-dialog-title"
+  aria-describedby="confirm-dialog-message"
+  (keydown.escape)="cancel()"
+>
+  <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events, @angular-eslint/template/interactive-supports-focus -->
+  <div class="confirm-dialog__wrapper" (click)="onOverlayClick($event)">
+    <div class="confirm-dialog__card" #dialogCard tabindex="-1">
+      <div class="confirm-dialog__icon" aria-hidden="true">
+        <app-icon name="warning" />
+      </div>
+
+      <h2
+        id="confirm-dialog-title"
+        class="confirm-dialog__title"
+        data-testid="dialog-title"
+      >
+        {{ confirmDialogOptions()?.title }}
+      </h2>
+      <p
+        id="confirm-dialog-message"
+        class="confirm-dialog__message"
+        data-testid="dialog-message"
+      >
+        {{ confirmDialogOptions()?.message }}
+      </p>
+      <div class="confirm-dialog__actions">
+        <button
+          btn
+          variant="success"
+          (click)="confirm()"
+          class="confirm-dialog__btn"
+          data-testid="confirm-button"
+        >
+          {{ confirmDialogOptions()?.confirmButtonText }}
+        </button>
+        <button
+          btn
+          variant="danger"
+          (click)="cancel()"
+          class="confirm-dialog__btn"
+          data-testid="cancel-button"
+        >
+          {{ confirmDialogOptions()?.cancelButtonText }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
