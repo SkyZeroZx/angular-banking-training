@@ -18,12 +18,13 @@ Esta rama nace desde `workshop/04-testing-components-cva` y agrega la segunda ca
 
 ## Guion de 1h 30m
 
-1. 0-10 min: unit puro vs integracion liviana HTTP.
-2. 10-25 min: `http.spec-helper.ts`.
-3. 25-45 min: service specs y `req.flush`.
-4. 45-62 min: auth interceptor con header.
-5. 62-80 min: error interceptor y `HttpContext`.
-6. 80-90 min: ejercicio: agregar caso 422 o param opcional.
+1. 0-10 min: comparar rama 04 vs 05: ahora aparecen specs bajo `core/services` y `core/interceptors`.
+2. 10-22 min: `http.spec-helper.ts`: `setupHttpService`, `expectRequest`, params y `pagedResponse`.
+3. 22-42 min: `client.service.spec.ts`, `account.service.spec.ts` y `movement.service.spec.ts`: requests CRUD y query params.
+4. 42-58 min: `report.service.spec.ts`: respuestas array/base64/reporte y normalizacion.
+5. 58-72 min: `auth.interceptor.spec.ts`: token fake, `provideHttpClient(withInterceptors(...))` y header Authorization.
+6. 72-84 min: `error.interceptor.spec.ts`: status, toast, redirect, `SKIP_ERROR_INTERCEPTOR` y `verify`.
+7. 84-90 min: ejercicio: agregar caso 422 o validar que un parametro opcional no se envie.
 
 ## Validacion
 
