@@ -1,31 +1,29 @@
-# Workshop 04 - Testing de Componentes, DOM Helpers y CVA
+# Workshop 05 - Testing HTTP, Servicios e Interceptores
 
-Esta rama nace desde `workshop/03-http-errors-analytics` y agrega la primera capa real de testing.
+Esta rama nace desde `workshop/04-testing-components-cva` y agrega la segunda capa real de testing.
 
 ## Codigo agregado en esta sesion
 
-- `element.spec-helper.ts`.
-- `flush-macrotask.ts`.
-- Specs de UI compartida.
-- Specs de CVA: input, select y checkbox.
-- Specs de selects remotos.
-- Specs de directivas pequeñas: integer-only y scroll-end.
+- Specs de servicios HTTP: auth, client, account, movement y report.
+- Specs de interceptores: auth y error.
+- Spec de analytics gtag adapter.
+- Uso de `HttpTestingController`.
+- Validacion de params, headers, `flush` y `verify`.
+- Uso de `SKIP_ERROR_INTERCEPTOR`.
 
 ## Aun no existe en esta rama
 
-- Tests de servicios HTTP.
-- Tests de interceptores.
 - RouterTestingHarness specs.
-- Specs de pages/flows.
+- Specs de pages/flows con route params.
 
 ## Guion de 1h 30m
 
-1. 0-15 min: unit vs component test en Angular.
-2. 15-25 min: Act, Wait, Assert con `fixture.whenStable()`.
-3. 25-40 min: helpers DOM por `data-testid`.
-4. 40-58 min: CVA con host dummy.
-5. 58-75 min: select custom con interacciones reales.
-6. 75-90 min: ejercicio: agregar prueba de un control sin tocar internals.
+1. 0-10 min: unit puro vs integracion liviana HTTP.
+2. 10-25 min: `http.spec-helper.ts`.
+3. 25-45 min: service specs y `req.flush`.
+4. 45-62 min: auth interceptor con header.
+5. 62-80 min: error interceptor y `HttpContext`.
+6. 80-90 min: ejercicio: agregar caso 422 o param opcional.
 
 ## Validacion
 
