@@ -23,10 +23,10 @@ Esta rama nace desde `workshop/01-shell-routing-signals` y agrega el segundo blo
 ## Guion de 1h 30m
 
 1. 0-10 min: comparar rama 01 vs 02: ahora aparecen `shared/ui`, rutas de create/edit y nuevas paginas.
-2. 10-24 min: `ButtonComponent`, `IconComponent`, `DataTableComponent` y `PaginatorComponent`: contratos chicos de UI.
-3. 24-42 min: `InputFieldComponent`, `SelectFieldComponent` y `CheckboxFieldComponent`: CVA y errores de formulario.
+2. 10-24 min: `shared/ui/button`, `shared/ui/icon`, `shared/ui/data-table` y `shared/ui/paginator`: contratos chicos de UI.
+3. 24-42 min: `shared/ui/form-field/input-field`, `select-field` y `checkbox-field`: CVA y errores de formulario.
 4. 42-58 min: `ClientFormComponent`, `AccountFormComponent` y `MovementFormComponent`: formularios compuestos con `NG_VALUE_ACCESSOR` y `NG_VALIDATORS`.
-5. 58-72 min: `BasePagedSelectComponent`, `ClientSelectFieldComponent` y `AccountSelectFieldComponent`: selects remotos paginados.
+5. 58-72 min: `shared/components/base-paged-select.ts`, `ClientSelectFieldComponent` y `AccountSelectFieldComponent`: selects remotos paginados.
 6. 72-82 min: `withComponentInputBinding()` en rutas de edicion de clientes/cuentas.
 7. 82-90 min: ejercicio: agregar un campo nuevo en `AccountFormComponent` y consumirlo desde create/edit.
 
