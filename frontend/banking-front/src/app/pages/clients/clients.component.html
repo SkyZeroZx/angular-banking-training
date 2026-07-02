@@ -111,6 +111,9 @@
           variant="danger"
           size="sm"
           appConfirmDialog
+          appClickTracking
+          [eventName]="'client_delete'"
+          [eventData]="{ clienteId: row.clienteId }"
           [title]="'Eliminar cliente'"
           [message]="'¿Está seguro de eliminar a ' + row.nombre + '?'"
           [confirmButtonText]="'Eliminar'"

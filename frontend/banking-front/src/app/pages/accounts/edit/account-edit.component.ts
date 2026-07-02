@@ -16,6 +16,7 @@ import { AccountResponse } from '@core/interface';
 import { AccountService } from '@core/services/account/account.service';
 import { ToastService } from '@shared/ui/toast/toast.service';
 import { ButtonComponent } from '@shared/ui/button/button.component';
+import { ClickTrackingDirective } from '@shared/directives/click-tracking/click-tracking.directive';
 import { SkeletonComponent } from '@shared/ui/skeleton/skeleton.component';
 import { AccountFormComponent } from '../components/account-form.component';
 import { IconComponent } from '@shared/ui/icon/icon.component';
@@ -30,6 +31,7 @@ import { IconComponent } from '@shared/ui/icon/icon.component';
     SkeletonComponent,
     RouterLink,
     ButtonComponent,
+    ClickTrackingDirective,
     IconComponent,
   ],
   templateUrl: './account-edit.component.html',

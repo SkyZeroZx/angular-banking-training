@@ -21,6 +21,7 @@ import { DecimalPipe } from '@angular/common';
 import { AccountService } from '@core/services/account/account.service';
 import { AccountResponse } from '@core/interface';
 import { ButtonComponent } from '@shared/ui/button/button.component';
+import { ClickTrackingDirective } from '@shared/directives/click-tracking/click-tracking.directive';
 import { ConfirmDialogDirective } from '@shared/ui/dialog/directive/confirm-dialog.directive';
 import { ToastService } from '@shared/ui/toast/toast.service';
 import { DataTableComponent } from '@shared/ui/data-table/data-table.component';
@@ -38,6 +39,7 @@ import { IconComponent } from '@shared/ui/icon/icon.component';
     DecimalPipe,
     DataTableComponent,
     TableColumnDirective,
+    ClickTrackingDirective,
     IconComponent,
   ],
   templateUrl: './accounts.component.html',

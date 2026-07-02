@@ -10,6 +10,8 @@
         btn
         variant="primary"
         type="submit"
+        appClickTracking
+        [eventName]="'account_create'"
         [loading]="saving()"
       >
         <app-icon name="save" /> Guardar

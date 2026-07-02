@@ -95,6 +95,9 @@
           variant="danger"
           size="sm"
           appConfirmDialog
+          appClickTracking
+          [eventName]="'movement_delete'"
+          [eventData]="{ id: row.id }"
           [title]="'Eliminar movimiento'"
           [message]="'¿Está seguro de eliminar el movimiento #' + row.id + '?'"
           [confirmButtonText]="'Eliminar'"

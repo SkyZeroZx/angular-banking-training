@@ -31,6 +31,8 @@
         variant="primary"
         size="lg"
         type="submit"
+        appClickTracking
+        [eventName]="'login_attempt'"
         [loading]="loading()"
       >
         Ingresar

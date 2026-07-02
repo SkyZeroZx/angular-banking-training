@@ -11,6 +11,7 @@ import { MovementRequest } from '@core/interface';
 import { MovementService } from '@core/services/movement/movement.service';
 import { ToastService } from '@shared/ui/toast/toast.service';
 import { ButtonComponent } from '@shared/ui/button/button.component';
+import { ClickTrackingDirective } from '@shared/directives/click-tracking/click-tracking.directive';
 import { MovementFormComponent } from '../components/movement-form.component';
 import { IconComponent } from '@shared/ui/icon/icon.component';
 
@@ -23,6 +24,7 @@ import { IconComponent } from '@shared/ui/icon/icon.component';
     MovementFormComponent,
     RouterLink,
     ButtonComponent,
+    ClickTrackingDirective,
     IconComponent,
   ],
   templateUrl: './movement-create.component.html',

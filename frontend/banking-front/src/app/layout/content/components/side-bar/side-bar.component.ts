@@ -14,5 +14,6 @@ export class SideBarComponent {
     { path: '/clientes', label: 'Clientes', icon: 'people' },
     { path: '/cuentas', label: 'Cuentas', icon: 'account_balance' },
     { path: '/movimientos', label: 'Movimientos', icon: 'swap_horiz' },
+    { path: '/reportes', label: 'Reportes', icon: 'bar_chart' },
   ];
 }

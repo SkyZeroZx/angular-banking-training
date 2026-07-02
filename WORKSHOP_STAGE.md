@@ -1,34 +1,32 @@
-# Workshop 02 - UI propia, CVA y Formularios
+# Workshop 03 - HTTP, Errores y Analytics
 
-Esta rama nace desde `workshop/01-shell-routing-signals` y agrega el segundo bloque real de construccion.
+Esta rama nace desde `workshop/02-ui-cva-forms` y completa la app Angular funcional.
 
 ## Codigo agregado en esta sesion
 
-- UI compartida: button, icon, data table, paginator, modal, dialog, toast y control errors.
-- Controles CVA: input, select y checkbox.
-- Formularios compuestos: cliente, cuenta y movimiento.
-- Selects remotos paginados: cliente y cuenta.
-- Rutas de crear/editar clientes, cuentas y movimientos.
-- Servicios de cuenta y movimiento.
-- `withComponentInputBinding()` para rutas de edicion.
+- Reportes y `ReportService`.
+- Normalizacion de respuestas de reporte.
+- `errorInterceptor` con `HttpContext`.
+- `GlobalErrorHandler`.
+- Analytics por strategy con `provideAnalytics()` y `withGtag()`.
+- `ClickTrackingDirective`.
+- App config final con interceptores, service worker, toast, error handler y analytics.
 
 ## Aun no existe en esta rama
 
-- Reportes.
-- Error interceptor.
-- Global error handler.
-- Analytics/click tracking.
-- Specs avanzados; solo queda smoke test de app.
+- Suite completa de tests unitarios/integracion.
+- Helpers de testing.
+- RouterTestingHarness specs.
 
 ## Guion de 1h 30m
 
-1. 0-10 min: comparar rama 01 vs 02 y ver que ahora aparece una UI propia.
-2. 10-30 min: `InputFieldComponent` como CVA.
-3. 30-45 min: `SelectFieldComponent`, busqueda y teclado.
-4. 45-60 min: formularios compuestos con `NG_VALUE_ACCESSOR` y `NG_VALIDATORS`.
-5. 60-72 min: selects paginados con `BasePagedSelectComponent`.
-6. 72-82 min: tabla/paginador con templates.
-7. 82-90 min: ejercicio: agregar un campo nuevo al formulario.
+1. 0-15 min: servicios HTTP y frontera componente/servicio.
+2. 15-30 min: reportes y normalizacion de backend.
+3. 30-45 min: auth + error interceptors.
+4. 45-60 min: `HttpContext` para saltar manejo global.
+5. 60-72 min: `GlobalErrorHandler`.
+6. 72-82 min: analytics strategy tree-shakeable.
+7. 82-90 min: ejercicio: agregar otra strategy o status de error.
 
 ## Validacion
 

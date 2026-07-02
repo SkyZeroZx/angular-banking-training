@@ -10,6 +10,8 @@
         btn
         variant="primary"
         type="submit"
+        appClickTracking
+        [eventName]="'movement_create'"
         [loading]="saving()"
       >
         <app-icon name="add_circle" /> Registrar

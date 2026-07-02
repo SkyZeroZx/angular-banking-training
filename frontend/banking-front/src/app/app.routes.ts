@@ -82,6 +82,14 @@ export const appRoutes: Route[] = [
             (m) => m.MovementCreateComponent,
           ),
       },
+      {
+        path: 'reportes',
+        title: 'Banking Frontend | Reportes',
+        loadComponent: () =>
+          import('@app/pages/reports/reports.component').then(
+            (m) => m.ReportsComponent,
+          ),
+      },
     ],
   },
   { path: '**', redirectTo: '' },

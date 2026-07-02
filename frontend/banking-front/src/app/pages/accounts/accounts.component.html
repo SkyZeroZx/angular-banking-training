@@ -93,6 +93,9 @@
           variant="danger"
           size="sm"
           appConfirmDialog
+          appClickTracking
+          [eventName]="'account_delete'"
+          [eventData]="{ numeroCuenta: row.numeroCuenta }"
           [title]="'Eliminar cuenta'"
           [message]="
             '¿Está seguro de eliminar la cuenta ' + row.numeroCuenta + '?'

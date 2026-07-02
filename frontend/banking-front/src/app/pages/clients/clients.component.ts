@@ -20,6 +20,7 @@ import { RouterLink } from '@angular/router';
 import { ClientService } from '@core/services/client/client.service';
 import { ClientResponse } from '@core/interface';
 import { ButtonComponent } from '@shared/ui/button/button.component';
+import { ClickTrackingDirective } from '@shared/directives/click-tracking/click-tracking.directive';
 import { ConfirmDialogDirective } from '@shared/ui/dialog/directive/confirm-dialog.directive';
 import { ToastService } from '@shared/ui/toast/toast.service';
 import { DataTableComponent } from '@shared/ui/data-table/data-table.component';
@@ -36,6 +37,7 @@ import { IconComponent } from '@shared/ui/icon/icon.component';
     RouterLink,
     DataTableComponent,
     TableColumnDirective,
+    ClickTrackingDirective,
     IconComponent,
   ],
   templateUrl: './clients.component.html',

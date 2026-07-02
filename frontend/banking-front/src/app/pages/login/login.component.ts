@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth/auth.service';
 import { AuthRequest, FormType } from '@core/interface';
 import { ButtonComponent } from '@shared/ui/button/button.component';
+import { ClickTrackingDirective } from '@shared/directives/click-tracking/click-tracking.directive';
 import { ControlErrorModule } from '@shared/ui/control-error/control-error.module';
 import { InputFieldComponent } from '@shared/ui/form-field/input-field/input-field.component';
 
@@ -23,6 +24,7 @@ import { InputFieldComponent } from '@shared/ui/form-field/input-field/input-fie
     ReactiveFormsModule,
     FormsModule,
     ButtonComponent,
+    ClickTrackingDirective,
     ControlErrorModule,
     InputFieldComponent,
   ],
