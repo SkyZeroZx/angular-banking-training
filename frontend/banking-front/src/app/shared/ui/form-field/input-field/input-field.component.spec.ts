@@ -4,8 +4,9 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputFieldComponent } from './input-field.component';
 import {
   findEl,
-  queryEl,
   dispatchFakeEvent,
+  getText,
+  queryEl,
 } from '../../../../spec-helpers/element.spec-helper';
 
 @Component({
@@ -45,9 +46,7 @@ describe('InputFieldComponent', () => {
   });
 
   it('renders the label with the correct text', () => {
-    expect(findEl(fixture, 'label').nativeElement.textContent.trim()).toBe(
-      'Email',
-    );
+    expect(getText(fixture, 'label').trim()).toBe('Email');
   });
 
   it('associates label with input via matching for/id', () => {

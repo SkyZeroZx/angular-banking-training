@@ -4,10 +4,11 @@ import { of } from 'rxjs';
 import { ClientsComponent } from './clients.component';
 import { ClientService } from '@core/services/client/client.service';
 import { ToastService } from '@shared/ui/toast/toast.service';
-import { ClientResponse, PagedResponse } from '@core/interface';
+import { ClientResponse } from '@core/interface';
 import { expectContainedText } from '@app/spec-helpers/element.spec-helper';
 import { AnalyticsAdapter } from '@core/services/analytics/analytics.adapter';
 import { flushMacrotask } from '@app/spec-helpers/flush-macrotask';
+import { pagedResponse } from '@app/spec-helpers/http.spec-helper';
 
 const mockClient: ClientResponse = {
   clienteId: '1',
@@ -20,15 +21,9 @@ const mockClient: ClientResponse = {
   estado: true,
 };
 
-const mockPaged: PagedResponse<ClientResponse> = {
-  content: [mockClient],
-  page: 1,
+const mockPaged = pagedResponse([mockClient], {
   size: 10,
-  totalElements: 1,
-  totalPages: 1,
-  first: true,
-  last: true,
-};
+});
 
 describe('ClientsComponent', () => {
   let fixture: ComponentFixture<ClientsComponent>;

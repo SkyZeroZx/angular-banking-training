@@ -3,8 +3,10 @@ import { Component, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxFieldComponent } from './checkbox-field.component';
 import {
+  checkField,
   findEl,
   dispatchFakeEvent,
+  getText,
 } from '../../../../spec-helpers/element.spec-helper';
 
 @Component({
@@ -35,9 +37,7 @@ describe('CheckboxFieldComponent', () => {
   });
 
   it('renders the label text', () => {
-    expect(
-      findEl(fixture, 'checkbox-label').nativeElement.textContent,
-    ).toContain('Accept terms');
+    expect(getText(fixture, 'checkbox-label')).toContain('Accept terms');
   });
 
   it('associates the label with the checkbox via matching for/id', () => {
@@ -74,10 +74,7 @@ describe('CheckboxFieldComponent', () => {
   });
 
   it('propagates checked state to FormControl on change', async () => {
-    const checkbox = findEl(fixture, 'checkbox')
-      .nativeElement as HTMLInputElement;
-    checkbox.checked = true;
-    dispatchFakeEvent(checkbox, 'change', true);
+    checkField(fixture, 'checkbox', true);
     await fixture.whenStable();
     expect(host.ctrl.value).toBe(true);
   });
@@ -85,10 +82,7 @@ describe('CheckboxFieldComponent', () => {
   it('propagates unchecked state to FormControl on change', async () => {
     host.ctrl.setValue(true);
     await fixture.whenStable();
-    const checkbox = findEl(fixture, 'checkbox')
-      .nativeElement as HTMLInputElement;
-    checkbox.checked = false;
-    dispatchFakeEvent(checkbox, 'change', true);
+    checkField(fixture, 'checkbox', false);
     await fixture.whenStable();
     expect(host.ctrl.value).toBe(false);
   });

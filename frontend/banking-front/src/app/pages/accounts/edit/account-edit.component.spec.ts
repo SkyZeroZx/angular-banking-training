@@ -13,6 +13,7 @@ import { ToastService } from '@shared/ui/toast/toast.service';
 import { AccountResponse } from '@core/interface';
 import { Component } from '@angular/core';
 import { AnalyticsAdapter } from '@core/services/analytics/analytics.adapter';
+import { pagedResponse } from '@app/spec-helpers/http.spec-helper';
 
 @Component({ template: '<p>Lista</p>' })
 class FakeListComponent {}
@@ -32,17 +33,9 @@ describe('AccountEditComponent', () => {
     update: jest.fn(),
   };
   const clientServiceSpy = {
-    getAll: jest.fn().mockReturnValue(
-      of({
-        content: [],
-        page: 1,
-        size: 200,
-        totalElements: 0,
-        totalPages: 0,
-        first: true,
-        last: true,
-      }),
-    ),
+    getAll: jest
+      .fn()
+      .mockReturnValue(of(pagedResponse([], { size: 200, totalPages: 0 }))),
   };
   const toastSpy = { success: jest.fn() };
 

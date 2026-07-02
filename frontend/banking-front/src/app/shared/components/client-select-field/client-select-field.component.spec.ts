@@ -4,11 +4,17 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { ClientSelectFieldComponent } from './client-select-field.component';
 import { ClientService } from '@core/services/client/client.service';
-import { PagedResponse, ClientResponse } from '@core/interface';
-import { findEl } from '@app/spec-helpers/element.spec-helper';
+import { ClientResponse } from '@core/interface';
+import {
+  click,
+  findEl,
+  findEls,
+  getText,
+} from '@app/spec-helpers/element.spec-helper';
+import { pagedResponse } from '@app/spec-helpers/http.spec-helper';
 
-const mockClients: PagedResponse<ClientResponse> = {
-  content: [
+const mockClients = pagedResponse<ClientResponse>(
+  [
     {
       clienteId: 'c1',
       nombre: 'José Lema',
@@ -30,13 +36,8 @@ const mockClients: PagedResponse<ClientResponse> = {
       estado: true,
     },
   ],
-  page: 1,
-  size: 20,
-  totalElements: 2,
-  totalPages: 1,
-  first: true,
-  last: true,
-};
+  { size: 20 },
+);
 
 @Component({
   imports: [ClientSelectFieldComponent, ReactiveFormsModule],
@@ -76,18 +77,14 @@ describe('ClientSelectFieldComponent', () => {
   it('writes an external value to the inner control', async () => {
     host.ctrl.setValue('c1');
     await fixture.whenStable();
-    const trigger = findEl(fixture, 'trigger').nativeElement as HTMLElement;
-    expect(trigger.textContent).toContain('José Lema');
+    expect(getText(fixture, 'trigger')).toContain('José Lema');
   });
 
   it('propagates inner selection to the outer FormControl', async () => {
-    findEl(fixture, 'trigger').nativeElement.click();
+    click(fixture, 'trigger');
     await fixture.whenStable();
 
-    const options = fixture.nativeElement.querySelectorAll<HTMLElement>(
-      '[data-testid="option"]',
-    );
-    options[1]?.click();
+    findEls(fixture, 'option')[1].nativeElement.click();
     await fixture.whenStable();
 
     expect(host.ctrl.value).toBe('c2');

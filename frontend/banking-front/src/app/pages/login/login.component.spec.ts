@@ -5,7 +5,10 @@ import { RouterTestingHarness } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import { LoginComponent } from './login.component';
 import { AuthService } from '@core/services/auth/auth.service';
-import { expectContainedText } from '@app/spec-helpers/element.spec-helper';
+import {
+  expectContainedText,
+  findComponents,
+} from '@app/spec-helpers/element.spec-helper';
 import { AnalyticsAdapter } from '@core/services/analytics/analytics.adapter';
 
 @Component({ template: '<p data-testid="home">Home</p>' })
@@ -54,10 +57,7 @@ describe('LoginComponent', () => {
 
   it('should render username and password inputs', async () => {
     await harness.navigateByUrl('/login', LoginComponent);
-    const nativeEl = harness.routeNativeElement;
-    expect(nativeEl).not.toBeNull();
-    const fields = nativeEl.querySelectorAll('app-input-field');
-    expect(fields.length).toBe(2);
+    expect(findComponents(harness.fixture, 'app-input-field')).toHaveLength(2);
   });
 
   it('should mark form as touched when submitted with empty fields', async () => {

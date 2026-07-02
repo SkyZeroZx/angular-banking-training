@@ -4,10 +4,11 @@ import { of } from 'rxjs';
 import { AccountsComponent } from './accounts.component';
 import { AccountService } from '@core/services/account/account.service';
 import { ToastService } from '@shared/ui/toast/toast.service';
-import { AccountResponse, PagedResponse } from '@core/interface';
+import { AccountResponse } from '@core/interface';
 import { expectContainedText } from '@app/spec-helpers/element.spec-helper';
 import { AnalyticsAdapter } from '@core/services/analytics/analytics.adapter';
 import { flushMacrotask } from '@app/spec-helpers/flush-macrotask';
+import { pagedResponse } from '@app/spec-helpers/http.spec-helper';
 
 const mockAccount: AccountResponse = {
   numeroCuenta: '478758',
@@ -17,15 +18,9 @@ const mockAccount: AccountResponse = {
   cliente: 'José Lema',
 };
 
-const mockPaged: PagedResponse<AccountResponse> = {
-  content: [mockAccount],
-  page: 1,
+const mockPaged = pagedResponse([mockAccount], {
   size: 10,
-  totalElements: 1,
-  totalPages: 1,
-  first: true,
-  last: true,
-};
+});
 
 describe('AccountsComponent', () => {
   let fixture: ComponentFixture<AccountsComponent>;

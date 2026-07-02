@@ -1,5 +1,5 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { ReportsComponent } from './reports.component';
 import { ReportService } from '@core/services/report/report.service';
 import { ClientService } from '@core/services/client/client.service';
@@ -7,9 +7,10 @@ import { PagedResponse, ReportRow, ClientResponse } from '@core/interface';
 import { expectContainedText } from '@app/spec-helpers/element.spec-helper';
 import { AnalyticsAdapter } from '@core/services/analytics/analytics.adapter';
 import { flushMacrotask } from '@app/spec-helpers/flush-macrotask';
+import { pagedResponse } from '@app/spec-helpers/http.spec-helper';
 
-const mockClients: PagedResponse<ClientResponse> = {
-  content: [
+const mockClients: PagedResponse<ClientResponse> = pagedResponse(
+  [
     {
       clienteId: '1',
       nombre: 'José Lema',
@@ -21,13 +22,8 @@ const mockClients: PagedResponse<ClientResponse> = {
       estado: true,
     },
   ],
-  page: 1,
-  size: 20,
-  totalElements: 1,
-  totalPages: 1,
-  first: true,
-  last: true,
-};
+  { size: 20 },
+);
 
 const mockRows: ReportRow[] = [
   {
@@ -42,15 +38,9 @@ const mockRows: ReportRow[] = [
   },
 ];
 
-const mockPagedRows: PagedResponse<ReportRow> = {
-  content: mockRows,
-  page: 1,
+const mockPagedRows: PagedResponse<ReportRow> = pagedResponse(mockRows, {
   size: 10,
-  totalElements: 1,
-  totalPages: 1,
-  first: true,
-  last: true,
-};
+});
 
 describe('ReportsComponent', () => {
   let fixture: ComponentFixture<ReportsComponent>;
@@ -186,9 +176,7 @@ describe('ReportsComponent', () => {
 
   it('should set rows to empty array when the report request fails', async () => {
     reportServiceSpy.getReport.mockReturnValue(
-      new (require('rxjs').Observable)((sub: { error: (e: Error) => void }) =>
-        sub.error(new Error('server error')),
-      ),
+      throwError(() => new Error('server error')),
     );
     component.form.setValue({
       fechaInicio: '2024-01-01',

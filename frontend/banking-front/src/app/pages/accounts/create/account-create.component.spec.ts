@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { AccountCreateComponent } from './account-create.component';
 import { AccountService } from '@core/services/account/account.service';
 import { ToastService } from '@shared/ui/toast/toast.service';
@@ -79,9 +79,7 @@ describe('AccountCreateComponent', () => {
 
   it('should reset saving state after creation error', async () => {
     accountServiceSpy.create.mockReturnValue(
-      new (require('rxjs').Observable)((sub: { error: (e: Error) => void }) =>
-        sub.error(new Error('server error')),
-      ),
+      throwError(() => new Error('server error')),
     );
     component.createAccountForm.setValue({ numeroCuenta: '1' } as never);
 

@@ -1,7 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, signal } from '@angular/core';
 import { PaginatorComponent } from './paginator.component';
-import { findEl, queryByCss } from '../../../spec-helpers/element.spec-helper';
+import {
+  click,
+  findEl,
+  getText,
+  queryByCss,
+} from '../../../spec-helpers/element.spec-helper';
 
 @Component({
   imports: [PaginatorComponent],
@@ -44,7 +49,7 @@ describe('PaginatorComponent', () => {
   });
 
   it('displays the correct pagination range on the first page', () => {
-    const info = findEl(fixture, 'paginator-info').nativeElement.textContent;
+    const info = getText(fixture, 'paginator-info');
     expect(info).toContain('1');
     expect(info).toContain('10');
     expect(info).toContain('100');
@@ -53,15 +58,13 @@ describe('PaginatorComponent', () => {
   it('displays "Sin resultados" when totalElements is 0', async () => {
     host.totalElements.set(0);
     await fixture.whenStable();
-    expect(
-      findEl(fixture, 'paginator-info').nativeElement.textContent,
-    ).toContain('Sin resultados');
+    expect(getText(fixture, 'paginator-info')).toContain('Sin resultados');
   });
 
   it('displays page counter as "current page / totalPages"', async () => {
     host.page.set(3);
     await fixture.whenStable();
-    const pages = findEl(fixture, 'paginator-pages').nativeElement.textContent;
+    const pages = getText(fixture, 'paginator-pages');
     expect(pages).toContain('3');
     expect(pages).toContain('10');
   });
@@ -91,7 +94,7 @@ describe('PaginatorComponent', () => {
   });
 
   it('emits page 2 when next button is clicked from page 1', async () => {
-    findEl(fixture, 'btn-next').nativeElement.click();
+    click(fixture, 'btn-next');
     await fixture.whenStable();
     expect(host.emittedPage).toBe(2);
   });
@@ -99,7 +102,7 @@ describe('PaginatorComponent', () => {
   it('emits page 1 when first button is clicked from page 3', async () => {
     host.page.set(3);
     await fixture.whenStable();
-    findEl(fixture, 'btn-first').nativeElement.click();
+    click(fixture, 'btn-first');
     await fixture.whenStable();
     expect(host.emittedPage).toBe(1);
   });
@@ -107,13 +110,13 @@ describe('PaginatorComponent', () => {
   it('emits previous page when prev button is clicked', async () => {
     host.page.set(4);
     await fixture.whenStable();
-    findEl(fixture, 'btn-prev').nativeElement.click();
+    click(fixture, 'btn-prev');
     await fixture.whenStable();
     expect(host.emittedPage).toBe(3);
   });
 
   it('emits last page index when last button is clicked', async () => {
-    findEl(fixture, 'btn-last').nativeElement.click();
+    click(fixture, 'btn-last');
     await fixture.whenStable();
     expect(host.emittedPage).toBe(10);
   });

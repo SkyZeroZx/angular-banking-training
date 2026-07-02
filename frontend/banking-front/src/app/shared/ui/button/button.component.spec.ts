@@ -1,7 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, signal } from '@angular/core';
 import { ButtonComponent } from './button.component';
-import { findEl, queryEl } from '../../../spec-helpers/element.spec-helper';
+import {
+  findEl,
+  getText,
+  queryEl,
+} from '../../../spec-helpers/element.spec-helper';
 
 @Component({
   imports: [ButtonComponent],
@@ -44,8 +48,7 @@ describe('ButtonComponent', () => {
   });
 
   it('should render projected text content', async () => {
-    const btn = findEl(fixture, 'test-btn');
-    expect(btn.nativeElement.textContent).toContain('Click me');
+    expect(getText(fixture, 'test-btn')).toContain('Click me');
   });
 
   it('should apply default BEM classes (primary + lg)', async () => {

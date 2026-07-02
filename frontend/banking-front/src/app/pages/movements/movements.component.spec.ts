@@ -4,10 +4,11 @@ import { of } from 'rxjs';
 import { MovementsComponent } from './movements.component';
 import { MovementService } from '@core/services/movement/movement.service';
 import { ToastService } from '@shared/ui/toast/toast.service';
-import { MovementResponse, PagedResponse } from '@core/interface';
+import { MovementResponse } from '@core/interface';
 import { expectContainedText } from '@app/spec-helpers/element.spec-helper';
 import { AnalyticsAdapter } from '@core/services/analytics/analytics.adapter';
 import { flushMacrotask } from '@app/spec-helpers/flush-macrotask';
+import { pagedResponse } from '@app/spec-helpers/http.spec-helper';
 
 const mockMovement: MovementResponse = {
   id: 1,
@@ -18,15 +19,9 @@ const mockMovement: MovementResponse = {
   numeroCuenta: '478758',
 };
 
-const mockPaged: PagedResponse<MovementResponse> = {
-  content: [mockMovement],
-  page: 1,
+const mockPaged = pagedResponse([mockMovement], {
   size: 10,
-  totalElements: 1,
-  totalPages: 1,
-  first: true,
-  last: true,
-};
+});
 
 describe('MovementsComponent', () => {
   let fixture: ComponentFixture<MovementsComponent>;

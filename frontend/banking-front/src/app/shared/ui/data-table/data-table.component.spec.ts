@@ -3,8 +3,10 @@ import { Component, signal } from '@angular/core';
 import { DataTableComponent } from './data-table.component';
 import { TableColumnDirective } from './table-column.directive';
 import {
+  click,
   findEl,
   findEls,
+  getText,
   queryEl,
 } from '../../../spec-helpers/element.spec-helper';
 
@@ -119,8 +121,7 @@ describe('DataTableComponent', () => {
   it('shows the empty message when rows is empty', async () => {
     host.rows.set([]);
     await fixture.whenStable();
-    const empty = findEl(fixture, 'empty-message');
-    expect(empty.nativeElement.textContent.trim()).toBe('Sin elementos');
+    expect(getText(fixture, 'empty-message').trim()).toBe('Sin elementos');
   });
 
   it('hides the empty message when rows is not empty', () => {
@@ -130,7 +131,7 @@ describe('DataTableComponent', () => {
   it('forwards pageChange events from the paginator', async () => {
     host.total.set(30);
     await fixture.whenStable();
-    findEl(fixture, 'btn-next').nativeElement.click();
+    click(fixture, 'btn-next');
     await fixture.whenStable();
     expect(host.emittedPage).toBe(2);
   });

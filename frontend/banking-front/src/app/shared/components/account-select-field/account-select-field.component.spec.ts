@@ -4,11 +4,19 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { AccountSelectFieldComponent } from './account-select-field.component';
 import { AccountService } from '@core/services/account/account.service';
-import { PagedResponse, AccountResponse } from '@core/interface';
-import { findEl } from '@app/spec-helpers/element.spec-helper';
+import { AccountResponse } from '@core/interface';
+import {
+  click,
+  dispatchFakeEvent,
+  findComponent,
+  findEl,
+  findEls,
+  getText,
+} from '@app/spec-helpers/element.spec-helper';
+import { pagedResponse } from '@app/spec-helpers/http.spec-helper';
 
-const mockAccounts: PagedResponse<AccountResponse> = {
-  content: [
+const mockAccounts = pagedResponse<AccountResponse>(
+  [
     {
       numeroCuenta: '478758',
       tipoCuenta: 'AHORRO',
@@ -24,16 +32,11 @@ const mockAccounts: PagedResponse<AccountResponse> = {
       cliente: 'María López',
     },
   ],
-  page: 1,
-  size: 20,
-  totalElements: 2,
-  totalPages: 1,
-  first: true,
-  last: true,
-};
+  { size: 20 },
+);
 
-const mockPage2: PagedResponse<AccountResponse> = {
-  content: [
+const mockPage2 = pagedResponse<AccountResponse>(
+  [
     {
       numeroCuenta: '999001',
       tipoCuenta: 'AHORRO',
@@ -42,13 +45,14 @@ const mockPage2: PagedResponse<AccountResponse> = {
       cliente: 'Carlos Ruiz',
     },
   ],
-  page: 2,
-  size: 20,
-  totalElements: 3,
-  totalPages: 2,
-  first: false,
-  last: true,
-};
+  {
+    page: 2,
+    size: 20,
+    totalElements: 3,
+    totalPages: 2,
+    first: false,
+  },
+);
 
 @Component({
   imports: [AccountSelectFieldComponent, ReactiveFormsModule],
@@ -91,33 +95,27 @@ describe('AccountSelectFieldComponent', () => {
   });
 
   it('renders account options with numeroCuenta and cliente label', async () => {
-    findEl(fixture, 'trigger').nativeElement.click();
+    click(fixture, 'trigger');
     await fixture.whenStable();
 
-    const options = fixture.nativeElement.querySelectorAll<HTMLElement>(
-      '[data-testid="option"]',
-    );
+    const options = findEls(fixture, 'option');
     expect(options.length).toBe(2);
-    expect(options[0].textContent).toContain('478758');
-    expect(options[0].textContent).toContain('José Lema');
+    expect(options[0].nativeElement.textContent).toContain('478758');
+    expect(options[0].nativeElement.textContent).toContain('José Lema');
   });
 
   it('writes an external value to the inner control and shows the label', async () => {
     host.ctrl.setValue('478758');
     await fixture.whenStable();
-    const trigger = findEl(fixture, 'trigger').nativeElement as HTMLElement;
-    expect(trigger.textContent).toContain('478758');
-    expect(trigger.textContent).toContain('José Lema');
+    expect(getText(fixture, 'trigger')).toContain('478758');
+    expect(getText(fixture, 'trigger')).toContain('José Lema');
   });
 
   it('propagates selected account to the outer FormControl', async () => {
-    findEl(fixture, 'trigger').nativeElement.click();
+    click(fixture, 'trigger');
     await fixture.whenStable();
 
-    const options = fixture.nativeElement.querySelectorAll<HTMLElement>(
-      '[data-testid="option"]',
-    );
-    options[1]?.click();
+    findEls(fixture, 'option')[1].nativeElement.click();
     await fixture.whenStable();
 
     expect(host.ctrl.value).toBe('225487');
@@ -128,16 +126,13 @@ describe('AccountSelectFieldComponent', () => {
       of({ ...mockAccounts, content: [mockAccounts.content[0]] }),
     );
 
-    findEl(fixture, 'trigger').nativeElement.click();
+    click(fixture, 'trigger');
     await fixture.whenStable();
 
-    const search = fixture.nativeElement.querySelector<HTMLInputElement>(
-      '[data-testid="search"]',
-    );
+    const search = findEl(fixture, 'search').nativeElement as HTMLInputElement;
     search.value = '478';
-    search.dispatchEvent(new Event('input', { bubbles: true }));
+    dispatchFakeEvent(search, 'input', true);
 
-    // Advance debounce
     await new Promise((r) => setTimeout(r, 350));
     await fixture.whenStable();
 
@@ -152,20 +147,16 @@ describe('AccountSelectFieldComponent', () => {
       .mockReturnValueOnce(of({ ...mockAccounts, totalPages: 2 }))
       .mockReturnValueOnce(of(mockPage2));
 
-    // Recreate component so it picks up the new mock sequence
     fixture = TestBed.createComponent(TestHostComponent);
     host = fixture.componentInstance;
     await fixture.whenStable();
 
-    // Trigger scroll-end via the select's nearEnd output
-    const selectEl = fixture.nativeElement.querySelector('app-select-field');
-    const selectDebug = fixture.debugElement.query(
-      (de) => de.nativeElement === selectEl,
+    findComponent(fixture, 'app-select-field').triggerEventHandler(
+      'nearEnd',
+      null,
     );
-    selectDebug?.triggerEventHandler('nearEnd', null);
     await fixture.whenStable();
 
-    // Should have called getAll for page 2
     expect(accountServiceSpy.getAll).toHaveBeenCalledWith(
       expect.objectContaining({ page: 2 }),
     );

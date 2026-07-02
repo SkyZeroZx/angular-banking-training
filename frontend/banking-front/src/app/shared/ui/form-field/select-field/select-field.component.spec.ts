@@ -1,13 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, signal } from '@angular/core';
-import { By } from '@angular/platform-browser';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { SelectFieldComponent, SelectOption } from './select-field.component';
 import {
+  findComponent,
   findEl,
   findEls,
   queryEl,
   dispatchFakeEvent,
+  getText,
 } from '../../../../spec-helpers/element.spec-helper';
 
 const OPTIONS: SelectOption[] = [
@@ -51,9 +52,7 @@ describe('SelectFieldComponent', () => {
   });
 
   it('renders the label with the correct text', () => {
-    expect(findEl(fixture, 'label').nativeElement.textContent.trim()).toBe(
-      'Category',
-    );
+    expect(getText(fixture, 'label').trim()).toBe('Category');
   });
 
   it('associates label with trigger button via matching for/id', () => {
@@ -174,8 +173,9 @@ describe('SelectFieldComponent', () => {
   });
 
   it('emits searchChange with empty string when the panel opens', async () => {
-    const select: SelectFieldComponent = fixture.debugElement.query(
-      By.directive(SelectFieldComponent),
+    const select: SelectFieldComponent = findComponent(
+      fixture,
+      'app-select-field',
     ).componentInstance;
     const emitted: string[] = [];
     select.searchChange.subscribe((v: string) => emitted.push(v));

@@ -1,7 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IntegerOnlyDirective } from './integer-only.directive';
-import { findEl } from '@app/spec-helpers/element.spec-helper';
+import {
+  dispatchFakeEvent,
+  findEl,
+} from '@app/spec-helpers/element.spec-helper';
 
 @Component({
   imports: [IntegerOnlyDirective],
@@ -94,19 +97,19 @@ describe('IntegerOnlyDirective (always active)', () => {
   describe('input — sanitising decimal values', () => {
     it('truncates a decimal value to an integer', () => {
       inputEl.value = '15.6';
-      inputEl.dispatchEvent(new Event('input', { bubbles: true }));
+      dispatchFakeEvent(inputEl, 'input', true);
       expect(inputEl.value).toBe('15');
     });
 
     it('truncates a negative decimal value', () => {
       inputEl.value = '-3.9';
-      inputEl.dispatchEvent(new Event('input', { bubbles: true }));
+      dispatchFakeEvent(inputEl, 'input', true);
       expect(inputEl.value).toBe('-3');
     });
 
     it('leaves an integer value unchanged', () => {
       inputEl.value = '42';
-      inputEl.dispatchEvent(new Event('input', { bubbles: true }));
+      dispatchFakeEvent(inputEl, 'input', true);
       expect(inputEl.value).toBe('42');
     });
   });
@@ -184,7 +187,7 @@ describe('IntegerOnlyDirective ([appIntegerOnly] binding)', () => {
     host.active.set(false);
     await fixture.whenStable();
     inputEl.value = '7.3';
-    inputEl.dispatchEvent(new Event('input', { bubbles: true }));
+    dispatchFakeEvent(inputEl, 'input', true);
     expect(inputEl.value).toBe('7.3');
   });
 });
