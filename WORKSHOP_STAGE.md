@@ -13,12 +13,13 @@ Esta rama nace desde `workshop/05-testing-http-interceptors` y cierra el worksho
 
 ## Guion de 1h 30m
 
-1. 0-15 min: cuando usar `RouterTestingHarness`.
-2. 15-35 min: `auth.guard.spec.ts`.
-3. 35-55 min: `login.component.spec.ts`.
-4. 55-72 min: `account-edit.component.spec.ts` y route params.
-5. 72-82 min: frontera unit/component/integration.
-6. 82-90 min: ejercicio: agregar redirect o param invalido.
+1. 0-10 min: comparar rama 05 vs 06: ahora aparecen specs de `pages`, `layout` y `guards`.
+2. 10-28 min: `auth.guard.spec.ts`: `RouterTestingHarness`, rutas fake y redirects.
+3. 28-44 min: `login.component.spec.ts`: navegacion a `/login`, submit exitoso y error de auth.
+4. 44-62 min: `account-edit.component.spec.ts` y `client-edit.component.spec.ts`: route params + `withComponentInputBinding()`.
+5. 62-76 min: create/list page specs: `provideRouter`, providers fake y asserts de comportamiento.
+6. 76-84 min: layout specs: `content`, `header`, `side-bar` y `footer`.
+7. 84-90 min: ejercicio: agregar redirect o caso de param invalido.
 
 ## Validacion
 
