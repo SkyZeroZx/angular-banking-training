@@ -1,32 +1,31 @@
-# Workshop 03 - HTTP, Errores y Analytics
+# Workshop 04 - Testing de Componentes, DOM Helpers y CVA
 
-Esta rama nace desde `workshop/02-ui-cva-forms` y completa la app Angular funcional.
+Esta rama nace desde `workshop/03-http-errors-analytics` y agrega la primera capa real de testing.
 
 ## Codigo agregado en esta sesion
 
-- Reportes y `ReportService`.
-- Normalizacion de respuestas de reporte.
-- `errorInterceptor` con `HttpContext`.
-- `GlobalErrorHandler`.
-- Analytics por strategy con `provideAnalytics()` y `withGtag()`.
-- `ClickTrackingDirective`.
-- App config final con interceptores, toast, error handler y analytics.
+- `element.spec-helper.ts`.
+- `flush-macrotask.ts`.
+- Specs de UI compartida.
+- Specs de CVA: input, select y checkbox.
+- Specs de selects remotos.
+- Specs de directivas pequeñas: integer-only y scroll-end.
 
 ## Aun no existe en esta rama
 
-- Suite completa de tests unitarios/integracion.
-- Helpers de testing.
+- Tests de servicios HTTP.
+- Tests de interceptores.
 - RouterTestingHarness specs.
+- Specs de pages/flows.
 
 ## Guion de 1h 30m
 
-1. 0-15 min: servicios HTTP y frontera componente/servicio.
-2. 15-30 min: reportes y normalizacion de backend.
-3. 30-45 min: auth + error interceptors.
-4. 45-60 min: `HttpContext` para saltar manejo global.
-5. 60-72 min: `GlobalErrorHandler`.
-6. 72-82 min: analytics strategy tree-shakeable.
-7. 82-90 min: ejercicio: agregar otra strategy o status de error.
+1. 0-15 min: unit vs component test en Angular.
+2. 15-25 min: Act, Wait, Assert con `fixture.whenStable()`.
+3. 25-40 min: helpers DOM por `data-testid`.
+4. 40-58 min: CVA con host dummy.
+5. 58-75 min: select custom con interacciones reales.
+6. 75-90 min: ejercicio: agregar prueba de un control sin tocar internals.
 
 ## Validacion
 
