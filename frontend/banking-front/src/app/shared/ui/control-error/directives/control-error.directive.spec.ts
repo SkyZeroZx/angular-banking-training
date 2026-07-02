@@ -75,7 +75,7 @@ describe('ControlErrorsDirective', () => {
 
     expect(text).toBeDefined();
     expect(text.textContent?.trim()).toEqual(
-      defaultErrors['minlength']({ requiredLength: '3' }),
+      defaultErrors['minlength']({ requiredLength: 3 }),
     );
   });
 
@@ -88,7 +88,7 @@ describe('ControlErrorsDirective', () => {
 
     expect(text).toBeDefined();
     expect(text.textContent?.trim()).toEqual(
-      defaultErrors['maxlength']({ requiredLength: '2' }),
+      defaultErrors['maxlength']({ requiredLength: 2 }),
     );
   });
 });

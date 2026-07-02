@@ -6,6 +6,7 @@ import {
 } from '@angular/common/http';
 import {
   HttpTestingController,
+  TestRequest,
   provideHttpClientTesting,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
@@ -23,7 +24,11 @@ describe('errorInterceptor', () => {
   let toastSpy: jest.Mocked<Pick<ToastService, 'warn' | 'error'>>;
   let router: Router;
 
-  const flushError = (url: string, status: number, body: unknown = null) => {
+  const flushError = (
+    url: string,
+    status: number,
+    body: Parameters<TestRequest['flush']>[0] = null,
+  ) => {
     httpTesting
       .expectOne(url)
       .flush(body, { status, statusText: String(status) });

@@ -15,6 +15,7 @@ const mockAccount: AccountResponse = {
   tipoCuenta: 'AHORRO',
   saldoInicial: 2000,
   estado: true,
+  clienteId: '1',
   cliente: 'José Lema',
 };
 

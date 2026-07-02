@@ -22,6 +22,7 @@ const mockAccounts = pagedResponse<AccountResponse>(
       tipoCuenta: 'AHORRO',
       saldoInicial: 2000,
       estado: true,
+      clienteId: '1',
       cliente: 'José Lema',
     },
     {
@@ -29,6 +30,7 @@ const mockAccounts = pagedResponse<AccountResponse>(
       tipoCuenta: 'CORRIENTE',
       saldoInicial: 500,
       estado: true,
+      clienteId: '2',
       cliente: 'María López',
     },
   ],
@@ -42,6 +44,7 @@ const mockPage2 = pagedResponse<AccountResponse>(
       tipoCuenta: 'AHORRO',
       saldoInicial: 100,
       estado: true,
+      clienteId: '3',
       cliente: 'Carlos Ruiz',
     },
   ],
