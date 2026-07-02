@@ -1,6 +1,6 @@
 # Workshop 01 - Shell, Routing y Signals
 
-Esta rama es el primer corte ejecutable del workshop. La app expone login, layout autenticado y listado de clientes.
+Esta rama es el primer corte ejecutable del workshop. La app tiene solo login, layout autenticado y listado de clientes con HTML simple.
 
 ## Alcance
 
@@ -9,12 +9,14 @@ Esta rama es el primer corte ejecutable del workshop. La app expone login, layou
 - Guards de acceso publico/privado.
 - Layout autenticado con header, sidebar y footer.
 - Lista de clientes con `signal`, `computed`, `linkedSignal`, `toSignal` y `toObservable`.
-- Tabla y paginador como UI de lectura.
+- Tabla HTML simple como UI de lectura.
+- Smoke test minimo de arranque.
 
 ## Fuera de este corte
 
 - Formularios de creacion/edicion.
 - CVA y controles custom.
+- UI compartida.
 - Reportes.
 - Sesiones avanzadas de testing.
 
