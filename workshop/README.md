@@ -6,6 +6,17 @@ Esta rama presenta la base moderna de Angular antes de agregar UI propia, formul
 
 Construir un primer corte navegable: login, shell autenticado, listado read-only de clientes y dos labs aislados para explicar change detection y routing.
 
+## Temario de sesion
+
+1. Contexto del dominio y flujo local.
+2. Bootstrap standalone: `main.ts`, `app.ts`, `app.config.ts`.
+3. Router principal: `loadComponent`, children, guards y wildcard.
+4. Shell autenticado: layout, sidebar y `router-outlet`.
+5. Estado local de clientes: signals, RxJS interop y carga HTTP.
+6. Lab de change detection: zoneless, signals, `markForCheck`, `detectChanges`.
+7. Lab de routing: rutas hijas, resolver, query params, wildcard local y `routerOutletData`.
+8. Cierre: criterios para mantener labs aislados del dominio.
+
 ## 1. Bootstrap standalone
 
 Angular moderno no necesita `AppModule` para arrancar una aplicacion. El punto de entrada vive en `main.ts`, el componente raiz en `app.ts` y los providers globales en `app.config.ts`.

@@ -16,16 +16,15 @@ Primer corte ejecutable: login, shell autenticado, clientes read-only y labs ais
 - `pages/login`, `layout/content`, `pages/clients`.
 - `app/workshop/change-detection`.
 - `app/workshop/routing`.
-- Sin CVA, sin UI compartida, sin reportes, sin testing avanzado.
 
-## Practica
+## Recorrido
 
-1. Ejecutar app y entender flujo login -> shell -> clientes.
-2. Seguir rutas en `app.routes.ts`.
-3. Leer estado reactivo en `clients.component.ts`.
-4. Entrar a `/workshop/change-detection` y comparar signal, propiedad normal y `markForCheck`.
-5. Entrar a `/workshop/routing` y revisar rutas hijas, resolver y wildcard.
-6. Ejercicio: agregar una columna o filtro simple en clientes.
+1. Arranque local y flujo login -> shell -> clientes.
+2. Bootstrap standalone en `main.ts`, `app.ts` y `app.config.ts`.
+3. Rutas lazy, guards funcionales y layout protegido en `app.routes.ts`.
+4. Estado reactivo local en `clients.component.ts`.
+5. Lab `/workshop/change-detection`: signal, propiedad normal y `markForCheck`.
+6. Lab `/workshop/routing`: rutas hijas, resolver, wildcard y component input binding.
 
 ## Validacion
 

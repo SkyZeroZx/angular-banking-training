@@ -24,12 +24,12 @@ En una app real, no todos estos conceptos aparecen juntos en una sola pantalla. 
 - Como `withComponentInputBinding()` reduce dependencia directa de `ActivatedRoute`.
 - Como un wildcard local no reemplaza el wildcard global.
 
-## Ejercicio sugerido
+## Variacion para explicar
 
-Agregar ruta hija `stats/:year` que reciba:
+Una variacion util para mostrar el mismo patron seria una ruta hija `stats/:year` que reciba:
 
 - `year` como input.
 - `view` como query param.
 - `title` desde `data`.
 
-No usar `ActivatedRoute` en el componente. La idea es practicar `withComponentInputBinding()`.
+La idea didactica es contrastar `ActivatedRoute` con `withComponentInputBinding()` sin convertirlo en una tarea para resolver durante la sesion.
