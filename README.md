@@ -4,18 +4,20 @@ Repositorio full-stack para capacitacion Angular. Cada rama `workshop/*` es un s
 
 ## Rama Actual
 
-Lee [WORKSHOP_STAGE.md](WORKSHOP_STAGE.md) para ver que existe en esta rama, que todavia no existe y como dictar la sesion.
+Lee [WORKSHOP_STAGE.md](WORKSHOP_STAGE.md) para ver el corte ejecutable de esta rama.
+
+Lee [workshop/README.md](workshop/README.md) para la teoria de la sesion y material extra.
 
 ## Ramas
 
-| Rama | Sesion | Incremento real |
-| ---- | ------ | --------------- |
-| `workshop/01-shell-routing-signals` | Angular 1 | Shell, login, rutas lazy, guards, clientes con signals |
-| `workshop/02-ui-cva-forms` | Angular 2 | UI propia, CVA, formularios, cuentas y movimientos |
-| `workshop/03-http-errors-analytics` | Angular 3 | Reportes, interceptores, error global, analytics |
-| `workshop/04-testing-components-cva` | Testing 1 | Helpers DOM, component tests, CVA tests |
-| `workshop/05-testing-http-interceptors` | Testing 2 | HttpTestingController, servicios, interceptores |
-| `workshop/06-testing-router-integration` | Testing 3 | RouterTestingHarness, guards, flows de paginas |
+| Rama                                     | Sesion    | Incremento real                                        |
+| ---------------------------------------- | --------- | ------------------------------------------------------ |
+| `workshop/01-shell-routing-signals`      | Angular 1 | Shell, login, rutas lazy, guards, clientes con signals |
+| `workshop/02-ui-cva-forms`               | Angular 2 | UI propia, CVA, formularios, cuentas y movimientos     |
+| `workshop/03-http-errors-analytics`      | Angular 3 | Reportes, interceptores, error global, analytics       |
+| `workshop/04-testing-components-cva`     | Testing 1 | Helpers DOM, component tests, CVA tests                |
+| `workshop/05-testing-http-interceptors`  | Testing 2 | HttpTestingController, servicios, interceptores        |
+| `workshop/06-testing-router-integration` | Testing 3 | RouterTestingHarness, guards, flows de paginas         |
 
 ## Ejecucion Local
 
@@ -46,8 +48,8 @@ npm start
 
 Login local:
 
-| Usuario | Password |
-| ------- | -------- |
+| Usuario | Password   |
+| ------- | ---------- |
 | `admin` | `admin123` |
 
 ## Validacion
@@ -69,12 +71,12 @@ mvn test
 
 ## Servicios
 
-| Servicio | URL |
-| -------- | --- |
-| API Gateway | `http://localhost:8080` |
-| Banking Service | `http://localhost:8090` |
-| Auth Service | `http://localhost:8091` |
-| H2 Auth | `http://localhost:8091/h2-console` |
-| H2 Banking | `http://localhost:8090/h2-console` |
+| Servicio        | URL                                |
+| --------------- | ---------------------------------- |
+| API Gateway     | `http://localhost:8080`            |
+| Banking Service | `http://localhost:8090`            |
+| Auth Service    | `http://localhost:8091`            |
+| H2 Auth         | `http://localhost:8091/h2-console` |
+| H2 Banking      | `http://localhost:8090/h2-console` |
 
 H2 usa usuario `sa` y password vacio.
