@@ -18,12 +18,14 @@ Corte final: suite completa con guards, rutas, pages y layout.
 - Specs create/list de clients, accounts y movements.
 - Specs de `layout/content` y componentes `header`, `side-bar`, `footer`.
 
-## Practica
+## Recorrido
 
-1. Comparar rama 05 vs 06.
-2. Revisar redirect de `auth.guard.spec.ts`.
-3. Revisar edit specs con route params.
-4. Ejercicio: agregar redirect o caso de param invalido.
+1. Diferencia estructural entre rama 05 y rama 06.
+2. `RouterTestingHarness` y rutas de test.
+3. Guards por resultado de navegacion.
+4. Login flow con router y providers fake.
+5. Edit specs con route params y component input binding.
+6. Page specs y layout specs como integration tests.
 
 ## Validacion
 

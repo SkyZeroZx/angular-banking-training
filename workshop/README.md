@@ -6,6 +6,17 @@ Esta rama cierra el workshop con integration tests de router, guards, pages y la
 
 Probar flujos de navegacion Angular con router realista, sin subir a Cypress y sin mockear el router.
 
+## Temario de sesion
+
+1. Boundary entre unit, component integration, router integration y E2E.
+2. `RouterTestingHarness` como API para navegacion en tests.
+3. Guards probados por navegacion observable.
+4. Login flow con providers fake.
+5. Edit pages con route params y `withComponentInputBinding()`.
+6. Create/list page specs y assertions de DOM.
+7. Layout specs con shell y outlet.
+8. Cierre de piramide de testing Angular.
+
 ## 1. Integration test Angular
 
 Un integration test de page valida colaboracion entre:
