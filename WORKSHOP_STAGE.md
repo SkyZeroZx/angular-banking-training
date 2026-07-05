@@ -4,10 +4,12 @@ Segundo corte: la app pasa de HTML simple a UI reutilizable, formularios compues
 
 ## Teoria
 
-- UI propia: componentes chicos, inputs claros y contratos estables.
-- CVA: `ControlValueAccessor` para integrar controles custom con Reactive Forms.
-- Validacion reusable: `NG_VALIDATORS` cuando el componente expone reglas del formulario.
-- Routing de edicion: `withComponentInputBinding()` para params como inputs.
+- [Componentes UI como contrato](README.md#componentes-ui-como-contrato).
+- [ControlValueAccessor](README.md#controlvalueaccessor).
+- [Validadores custom](README.md#validadores-custom).
+- [Formularios compuestos](README.md#formularios-compuestos).
+- [Selects remotos paginados](README.md#selects-remotos-paginados).
+- [Route input binding](README.md#route-input-binding).
 
 ## Estructura
 
@@ -26,6 +28,13 @@ Segundo corte: la app pasa de HTML simple a UI reutilizable, formularios compues
 4. Formularios compuestos de clientes, cuentas y movimientos.
 5. Selects remotos paginados y `base-paged-select.ts`.
 6. Edicion con route input binding.
+
+## Ampliacion oficial
+
+- https://angular.dev/guide/components
+- https://angular.dev/guide/forms
+- https://angular.dev/api/forms/ControlValueAccessor
+- https://angular.dev/guide/routing/common-router-tasks
 
 ## Validacion
 
