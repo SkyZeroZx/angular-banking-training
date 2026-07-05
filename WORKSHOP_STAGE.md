@@ -19,12 +19,14 @@ Tercer corte: la app funcional queda completa con reportes y capa transversal.
 - `core/errors/global-error-handler.ts`.
 - `core/services/analytics` y `shared/directives/click-tracking`.
 
-## Practica
+## Recorrido
 
-1. Comparar rama 02 vs 03.
-2. Seguir flujo de reporte: form -> service -> descarga.
-3. Revisar protocolo de error en interceptor y `SKIP_ERROR_INTERCEPTOR`.
-4. Ejercicio: agregar una strategy nueva de analytics o un status nuevo al error handler.
+1. Diferencia estructural entre rama 02 y rama 03.
+2. Flujo de reporte: form -> service -> normalizacion -> descarga.
+3. Interceptores funcionales y orden de `provideHttpClient`.
+4. `HttpContext` como opt-out tipado para comportamiento transversal.
+5. `GlobalErrorHandler` para errores fuera del flujo HTTP.
+6. Analytics con adapter, strategies y directive.
 
 ## Validacion
 

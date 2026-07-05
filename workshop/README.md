@@ -6,6 +6,17 @@ Esta rama cierra la app funcional: reportes, HTTP transversal, manejo de errores
 
 Centralizar reglas de comunicacion y observabilidad sin contaminar componentes de pagina.
 
+## Temario de sesion
+
+1. Servicios HTTP como borde de integracion.
+2. Reportes: parametros, response normalization y descarga.
+3. Interceptores funcionales con `withInterceptors`.
+4. `HttpContext` para metadata por request.
+5. Manejo global de errores vs manejo local esperado.
+6. Analytics por adapter y strategy providers.
+7. Directiva de tracking declarativa en template.
+8. Cierre de arquitectura transversal.
+
 ## 1. Servicios HTTP como borde
 
 Los servicios deben hablar el idioma del backend y normalizar lo minimo necesario para que la UI no repita parsing.
