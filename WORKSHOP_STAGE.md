@@ -1,25 +1,29 @@
 # Workshop 06 - RouterTestingHarness e Integracion Angular
 
-Esta rama nace desde `workshop/05-testing-http-interceptors` y cierra el workshop con la suite completa.
+Corte final: suite completa con guards, rutas, pages y layout.
 
-## Codigo agregado en esta sesion
+## Teoria
 
-- Specs de guards con `RouterTestingHarness`.
-- Specs de login flow.
-- Specs de edicion con route params y `withComponentInputBinding()`.
-- Specs de pages/listados con providers reales de Angular.
-- Specs de layout.
-- Suite final completa del frontend.
+- Integration test Angular: probar flujo visible entre router, template y providers.
+- `RouterTestingHarness`: navegacion realista sin Cypress.
+- Params y inputs: validar `withComponentInputBinding()` en edicion.
+- Boundaries: unit tests para servicios, integration tests para page flows.
 
-## Guion de 1h 30m
+## Estructura
 
-1. 0-10 min: comparar rama 05 vs 06: ahora aparecen specs de `pages`, `layout` y `guards`.
-2. 10-28 min: `auth.guard.spec.ts`: `RouterTestingHarness`, rutas fake y redirects.
-3. 28-44 min: `login.component.spec.ts`: navegacion a `/login`, submit exitoso y error de auth.
-4. 44-62 min: `account-edit.component.spec.ts` y `client-edit.component.spec.ts`: route params + `withComponentInputBinding()`.
-5. 62-76 min: create/list page specs: `provideRouter`, providers fake y asserts de comportamiento.
-6. 76-84 min: layout specs: `layout/content/content.component.spec.ts`, `components/header`, `components/side-bar` y `components/footer`.
-7. 84-90 min: ejercicio: agregar redirect o caso de param invalido.
+- `core/guards/auth.guard.spec.ts`.
+- `pages/login/login.component.spec.ts`.
+- `pages/accounts/edit/account-edit.component.spec.ts`.
+- `pages/clients/edit/client-edit.component.spec.ts`.
+- Specs create/list de clients, accounts y movements.
+- Specs de `layout/content` y componentes `header`, `side-bar`, `footer`.
+
+## Practica
+
+1. Comparar rama 05 vs 06.
+2. Revisar redirect de `auth.guard.spec.ts`.
+3. Revisar edit specs con route params.
+4. Ejercicio: agregar redirect o caso de param invalido.
 
 ## Validacion
 
