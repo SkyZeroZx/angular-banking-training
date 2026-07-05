@@ -4,10 +4,12 @@ Tercer corte: la app funcional queda completa con reportes y capa transversal.
 
 ## Teoria
 
-- HTTP centralizado: servicios pequenos, parametros explicitos y normalizacion en borde.
-- Interceptores funcionales: auth header, manejo de errores y opt-out con `HttpContext`.
-- Error global: errores fuera del flujo HTTP normal.
-- Analytics por DI: providers composables, strategies y bajo acoplamiento.
+- [Servicios HTTP como borde](README.md#servicios-http-como-borde).
+- [Interceptores funcionales](README.md#interceptores-funcionales).
+- [HttpContext](README.md#httpcontext).
+- [Global error handler](README.md#global-error-handler).
+- [Analytics por strategies](README.md#analytics-por-strategies).
+- [Directiva de tracking](README.md#directiva-de-tracking).
 
 ## Estructura
 
@@ -27,6 +29,13 @@ Tercer corte: la app funcional queda completa con reportes y capa transversal.
 4. `HttpContext` como opt-out tipado para comportamiento transversal.
 5. `GlobalErrorHandler` para errores fuera del flujo HTTP.
 6. Analytics con adapter, strategies y directive.
+
+## Ampliacion oficial
+
+- https://angular.dev/guide/http
+- https://angular.dev/guide/http/interceptors
+- https://angular.dev/api/common/http/HttpContext
+- https://angular.dev/guide/di
 
 ## Validacion
 
