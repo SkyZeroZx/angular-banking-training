@@ -4,10 +4,12 @@ Corte final: suite completa con guards, rutas, pages y layout.
 
 ## Teoria
 
-- Integration test Angular: probar flujo visible entre router, template y providers.
-- `RouterTestingHarness`: navegacion realista sin Cypress.
-- Params y inputs: validar `withComponentInputBinding()` en edicion.
-- Boundaries: unit tests para servicios, integration tests para page flows.
+- [Integration test Angular](README.md#integration-test-angular).
+- [RouterTestingHarness](README.md#routertestingharness).
+- [Guards por navegacion](README.md#guards-por-navegacion).
+- [Route params y component input binding](README.md#route-params-y-component-input-binding).
+- [Page specs](README.md#page-specs).
+- [Testing boundaries](README.md#testing-boundaries).
 
 ## Estructura
 
@@ -26,6 +28,13 @@ Corte final: suite completa con guards, rutas, pages y layout.
 4. Login flow con router y providers fake.
 5. Edit specs con route params y component input binding.
 6. Page specs y layout specs como integration tests.
+
+## Ampliacion oficial
+
+- https://angular.dev/guide/routing/testing
+- https://angular.dev/guide/testing/components-basics
+- https://angular.dev/guide/testing/components-scenarios
+- https://angular.dev/guide/testing/services
 
 ## Validacion
 
