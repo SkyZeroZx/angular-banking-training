@@ -1,30 +1,30 @@
 # Workshop 05 - Testing HTTP, Servicios e Interceptores
 
-Esta rama nace desde `workshop/04-testing-components-cva` y agrega la segunda capa real de testing.
+Segundo corte de testing: requests HTTP, interceptores y normalizacion de respuestas.
 
-## Codigo agregado en esta sesion
+## Teoria
 
-- Specs de servicios HTTP: auth, client, account, movement y report.
-- Specs de interceptores: auth y error.
-- Spec de analytics gtag adapter.
-- Uso de `HttpTestingController`.
-- Validacion de params, headers, `flush` y `verify`.
-- Uso de `SKIP_ERROR_INTERCEPTOR`.
+- `HttpTestingController`: assert de metodo, URL, params, headers, body y `flush`.
+- Tests de servicios: validar contrato HTTP, no detalles internos.
+- Tests de interceptores: `provideHttpClient(withInterceptors(...))` y providers fake.
+- Limpieza: `httpMock.verify()` para detectar requests pendientes.
 
-## Aun no existe en esta rama
+## Estructura
 
-- RouterTestingHarness specs.
-- Specs de pages/flows con route params.
+- `spec-helpers/http.spec-helper.ts`.
+- `core/services/client/client.service.spec.ts`.
+- `core/services/account/account.service.spec.ts`.
+- `core/services/movement/movement.service.spec.ts`.
+- `core/services/report/report.service.spec.ts`.
+- `core/interceptors/auth.interceptor.spec.ts`.
+- `core/interceptors/error.interceptor.spec.ts`.
 
-## Guion de 1h 30m
+## Practica
 
-1. 0-10 min: comparar rama 04 vs 05: ahora aparecen specs bajo `core/services` y `core/interceptors`.
-2. 10-22 min: `http.spec-helper.ts`: `setupHttpService`, `expectRequest`, params y `pagedResponse`.
-3. 22-42 min: `client.service.spec.ts`, `account.service.spec.ts` y `movement.service.spec.ts`: requests CRUD y query params.
-4. 42-58 min: `report.service.spec.ts`: respuestas array/base64/reporte y normalizacion.
-5. 58-72 min: `auth.interceptor.spec.ts`: token fake, `provideHttpClient(withInterceptors(...))` y header Authorization.
-6. 72-84 min: `error.interceptor.spec.ts`: status, toast, redirect, `SKIP_ERROR_INTERCEPTOR` y `verify`.
-7. 84-90 min: ejercicio: agregar caso 422 o validar que un parametro opcional no se envie.
+1. Comparar rama 04 vs 05.
+2. Revisar helper HTTP y un spec CRUD.
+3. Revisar specs de interceptores con `SKIP_ERROR_INTERCEPTOR`.
+4. Ejercicio: agregar caso 422 o validar que un param opcional no se envie.
 
 ## Validacion
 
