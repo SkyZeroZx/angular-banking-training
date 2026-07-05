@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 import { authGuard, publicGuard } from '@core/guards/auth.guard';
-import { routingDemoNameResolver } from '@app/pages/workshop/routing/routing-demo.resolver';
+import { routingDemoNameResolver } from '@app/workshop/routing/routing-demo.resolver';
 
 export const appRoutes: Route[] = [
   {
@@ -31,7 +31,7 @@ export const appRoutes: Route[] = [
         path: 'workshop/change-detection',
         title: 'Workshop 01 | Change Detection',
         loadComponent: () =>
-          import('@app/pages/workshop/change-detection/change-detection-lab.component').then(
+          import('@app/workshop/change-detection/change-detection-lab.component').then(
             (m) => m.ChangeDetectionLabComponent,
           ),
       },
@@ -39,7 +39,7 @@ export const appRoutes: Route[] = [
         path: 'workshop/routing',
         title: 'Workshop 01 | Routing Lab',
         loadComponent: () =>
-          import('@app/pages/workshop/routing/routing-lab.component').then(
+          import('@app/workshop/routing/routing-lab.component').then(
             (m) => m.RoutingLabComponent,
           ),
         children: [
@@ -48,7 +48,7 @@ export const appRoutes: Route[] = [
             path: 'overview',
             title: 'Workshop 01 | Routing Overview',
             loadComponent: () =>
-              import('@app/pages/workshop/routing/routing-overview.component').then(
+              import('@app/workshop/routing/routing-overview.component').then(
                 (m) => m.RoutingOverviewComponent,
               ),
           },
@@ -59,7 +59,7 @@ export const appRoutes: Route[] = [
             data: { topic: 'Route data + resolver + component inputs' },
             resolve: { resolvedName: routingDemoNameResolver },
             loadComponent: () =>
-              import('@app/pages/workshop/routing/routing-detail.component').then(
+              import('@app/workshop/routing/routing-detail.component').then(
                 (m) => m.RoutingDetailComponent,
               ),
           },
@@ -67,7 +67,7 @@ export const appRoutes: Route[] = [
             path: '**',
             title: 'Workshop 01 | Routing Not Found',
             loadComponent: () =>
-              import('@app/pages/workshop/routing/routing-not-found.component').then(
+              import('@app/workshop/routing/routing-not-found.component').then(
                 (m) => m.RoutingNotFoundComponent,
               ),
           },

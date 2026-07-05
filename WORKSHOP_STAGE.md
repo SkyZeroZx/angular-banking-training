@@ -14,8 +14,8 @@ Primer corte ejecutable: login, shell autenticado, clientes read-only y labs ais
 
 - `core/services/auth`, `core/services/client`, `core/guards/auth.guard.ts`.
 - `pages/login`, `layout/content`, `pages/clients`.
-- `pages/workshop/change-detection`.
-- `pages/workshop/routing`.
+- `app/workshop/change-detection`.
+- `app/workshop/routing`.
 - Sin CVA, sin UI compartida, sin reportes, sin testing avanzado.
 
 ## Practica
