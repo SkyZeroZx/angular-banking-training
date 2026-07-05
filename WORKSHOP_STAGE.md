@@ -19,12 +19,14 @@ Segundo corte de testing: requests HTTP, interceptores y normalizacion de respue
 - `core/interceptors/auth.interceptor.spec.ts`.
 - `core/interceptors/error.interceptor.spec.ts`.
 
-## Practica
+## Recorrido
 
-1. Comparar rama 04 vs 05.
-2. Revisar helper HTTP y un spec CRUD.
-3. Revisar specs de interceptores con `SKIP_ERROR_INTERCEPTOR`.
-4. Ejercicio: agregar caso 422 o validar que un param opcional no se envie.
+1. Diferencia estructural entre rama 04 y rama 05.
+2. `HttpTestingController`: request, `flush`, error y `verify`.
+3. Tests CRUD de servicios con params y body.
+4. `report.service.spec.ts`: normalizacion de respuestas.
+5. `auth.interceptor.spec.ts`: header Authorization.
+6. `error.interceptor.spec.ts`: status, toast, redirect y `SKIP_ERROR_INTERCEPTOR`.
 
 ## Validacion
 

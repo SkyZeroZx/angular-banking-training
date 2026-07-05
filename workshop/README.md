@@ -6,6 +6,17 @@ Esta rama agrega tests de servicios HTTP e interceptores.
 
 Probar el contrato HTTP real de la aplicacion sin llamar backend y sin convertir tests en mocks de implementacion.
 
+## Temario de sesion
+
+1. Testing HTTP sin backend real.
+2. `HttpTestingController`: `expectOne`, `flush`, errores y `verify`.
+3. Specs de servicios CRUD.
+4. Query params, headers y body como contrato.
+5. Report service y normalizacion de responses.
+6. Interceptores con `provideHttpClient(withInterceptors(...))`.
+7. Orden `provideHttpClient` / `provideHttpClientTesting`.
+8. Opt-out con `HttpContext`.
+
 ## 1. HttpTestingController
 
 `HttpTestingController` reemplaza backend real por backend de test. Permite afirmar request y responder con `flush`.
