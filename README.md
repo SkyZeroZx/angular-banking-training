@@ -4,9 +4,7 @@ Repositorio full-stack para capacitacion Angular. Cada rama `workshop/*` es un s
 
 ## Rama Actual
 
-Lee [WORKSHOP_STAGE.md](WORKSHOP_STAGE.md) para ver el corte ejecutable de esta rama.
-
-Lee [workshop/README.md](workshop/README.md) para la teoria de la sesion y material extra.
+Lee [WORKSHOP_STAGE.md](WORKSHOP_STAGE.md) para ver como dictar esta sesion y donde ampliar cada tema en la documentacion oficial.
 
 ## Ramas
 
@@ -80,3 +78,105 @@ mvn test
 | H2 Banking      | `http://localhost:8090/h2-console` |
 
 H2 usa usuario `sa` y password vacio.
+
+## Workshop 05 - Testing HTTP, Servicios e Interceptores
+
+Esta sesion prueba contratos HTTP sin backend real: servicios, params, headers, errores e interceptores.
+
+## Temario
+
+1. Testing HTTP sin backend real.
+2. `HttpTestingController`: `expectOne`, `flush`, errores y `verify`.
+3. Specs de servicios CRUD.
+4. Query params, headers y body como contrato.
+5. Report service y normalizacion de responses.
+6. Interceptores con `provideHttpClient(withInterceptors(...))`.
+7. Orden correcto entre `provideHttpClient` y `provideHttpClientTesting`.
+8. Opt-out con `HttpContext`.
+
+## Teoria Angular Testing
+
+### HttpTestingController
+
+`HttpTestingController` permite interceptar requests hechos por `HttpClient` y responder desde el test. Asi se valida el contrato HTTP sin levantar backend.
+
+Ejemplo minimo:
+
+```ts
+TestBed.configureTestingModule({
+  providers: [provideHttpClient(), provideHttpClientTesting()],
+});
+
+const service = TestBed.inject(ClientService);
+const httpMock = TestBed.inject(HttpTestingController);
+
+service.getAll({ page: 1, size: 10 }).subscribe((response) => {
+  expect(response.totalElements).toBe(1);
+});
+
+const req = httpMock.expectOne((request) => request.url.endsWith("/clientes"));
+expect(req.request.method).toBe("GET");
+expect(req.request.params.get("page")).toBe("1");
+req.flush({ content: [], totalElements: 1 });
+httpMock.verify();
+```
+
+### Tests de servicios
+
+Un servicio HTTP se prueba por URL, metodo, params, headers, body y transformacion de response. No se mockea `HttpClient`; se observa el request real capturado por testing backend.
+
+Ejemplo minimo:
+
+```ts
+service.create(payload).subscribe();
+
+const req = httpMock.expectOne("/api/clientes");
+expect(req.request.method).toBe("POST");
+expect(req.request.body).toEqual(payload);
+req.flush(createdClient);
+```
+
+### Orden de providers HTTP
+
+Primero se configura el cliente real y sus features. Luego se reemplaza backend real por testing backend.
+
+Ejemplo minimo:
+
+```ts
+providers: [
+  provideHttpClient(withInterceptors([authInterceptor])),
+  provideHttpClientTesting(),
+];
+```
+
+### Interceptores
+
+Un interceptor se prueba ejecutando un request real de test y verificando el request transformado o el efecto esperado.
+
+Ejemplo minimo:
+
+```ts
+const req = httpMock.expectOne("/api/cuentas");
+expect(req.request.headers.get("Authorization")).toBe("Bearer token");
+req.flush([]);
+```
+
+### HttpContext en tests
+
+`HttpContext` permite activar o saltar comportamiento transversal por request. En tests se valida que el interceptor respete ese contrato.
+
+Ejemplo minimo:
+
+```ts
+http.get("/api/reportes", {
+  context: new HttpContext().set(SKIP_ERROR_INTERCEPTOR, true),
+});
+```
+
+## Documentacion oficial
+
+- HTTP testing: https://angular.dev/guide/http/testing
+- HTTP client: https://angular.dev/guide/http
+- HTTP interceptors: https://angular.dev/guide/http/interceptors
+- `HttpTestingController`: https://angular.dev/api/common/http/testing/HttpTestingController
+- `provideHttpClientTesting`: https://angular.dev/api/common/http/testing/provideHttpClientTesting

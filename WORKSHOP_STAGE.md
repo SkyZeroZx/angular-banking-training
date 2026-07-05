@@ -4,10 +4,11 @@ Segundo corte de testing: requests HTTP, interceptores y normalizacion de respue
 
 ## Teoria
 
-- `HttpTestingController`: assert de metodo, URL, params, headers, body y `flush`.
-- Tests de servicios: validar contrato HTTP, no detalles internos.
-- Tests de interceptores: `provideHttpClient(withInterceptors(...))` y providers fake.
-- Limpieza: `httpMock.verify()` para detectar requests pendientes.
+- [HttpTestingController](README.md#httptestingcontroller).
+- [Tests de servicios](README.md#tests-de-servicios).
+- [Orden de providers HTTP](README.md#orden-de-providers-http).
+- [Interceptores](README.md#interceptores).
+- [HttpContext en tests](README.md#httpcontext-en-tests).
 
 ## Estructura
 
@@ -27,6 +28,13 @@ Segundo corte de testing: requests HTTP, interceptores y normalizacion de respue
 4. `report.service.spec.ts`: normalizacion de respuestas.
 5. `auth.interceptor.spec.ts`: header Authorization.
 6. `error.interceptor.spec.ts`: status, toast, redirect y `SKIP_ERROR_INTERCEPTOR`.
+
+## Ampliacion oficial
+
+- https://angular.dev/guide/http/testing
+- https://angular.dev/guide/http/interceptors
+- https://angular.dev/api/common/http/testing/HttpTestingController
+- https://angular.dev/api/common/http/testing/provideHttpClientTesting
 
 ## Validacion
 
