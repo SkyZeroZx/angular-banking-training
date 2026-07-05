@@ -4,10 +4,11 @@ Primer corte de testing: componentes compartidos, CVA y directivas pequenas.
 
 ## Teoria
 
-- Unit test Angular: probar contrato publico, no propiedades privadas.
-- Integration test de componente: `TestBed`, template real, DOM events y host dummy.
-- CVA contract: `writeValue`, `registerOnChange`, disabled, touched y validators.
-- Helpers propios: menos repeticion, queries por `data-testid`, eventos claros.
+- [TestBed y componente real](README.md#testbed-y-componente-real).
+- [Testing por DOM](README.md#testing-por-dom).
+- [Host dummy para CVA](README.md#host-dummy-para-cva).
+- [Contrato CVA](README.md#contrato-cva).
+- [UI compartida](README.md#ui-compartida).
 
 ## Estructura
 
@@ -26,6 +27,13 @@ Primer corte de testing: componentes compartidos, CVA y directivas pequenas.
 4. Tests de selects remotos con doubles de servicio.
 5. Tests de UI compartida: table, paginator, modal, dialog, toast.
 6. Directivas pequenas con DOM real minimo.
+
+## Ampliacion oficial
+
+- https://angular.dev/guide/testing/components-basics
+- https://angular.dev/guide/testing/components-scenarios
+- https://angular.dev/guide/testing/utility-apis
+- https://angular.dev/api/forms/ControlValueAccessor
 
 ## Validacion
 
