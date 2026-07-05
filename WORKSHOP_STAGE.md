@@ -4,11 +4,11 @@ Primer corte ejecutable: login, shell autenticado, clientes read-only y labs ais
 
 ## Teoria
 
-- Bootstrap standalone: `main.ts`, `app.ts`, `app.config.ts`.
-- Routing moderno: `loadComponent`, guards funcionales y layout protegido.
-- Estado local: `signal`, `computed`, `linkedSignal`, `toSignal`, `toObservable`.
-- Change detection moderno: signals, `markForCheck`, `detectChanges` y pitfall zoneless.
-- Routing extra: rutas hijas, redirect, wildcard local, resolver, query params y component input binding.
+- [Bootstrap standalone](README.md#bootstrap-standalone): `main.ts`, `app.ts`, `app.config.ts`.
+- [Routing lazy](README.md#routing-lazy): `loadComponent`, guards funcionales y layout protegido.
+- [Signals y RxJS interop](README.md#signals-y-rxjs-interop): `signal`, `computed`, `linkedSignal`, `toSignal`, `toObservable`.
+- [Change detection zoneless](README.md#change-detection-zoneless): signals, `markForCheck`, `detectChanges`.
+- [Router avanzado del lab](README.md#router-avanzado-del-lab): rutas hijas, resolver, wildcard y component input binding.
 
 ## Estructura
 
@@ -25,6 +25,13 @@ Primer corte ejecutable: login, shell autenticado, clientes read-only y labs ais
 4. Estado reactivo local en `clients.component.ts`.
 5. Lab `/workshop/change-detection`: signal, propiedad normal y `markForCheck`.
 6. Lab `/workshop/routing`: rutas hijas, resolver, wildcard y component input binding.
+
+## Ampliacion oficial
+
+- https://angular.dev/guide/components
+- https://angular.dev/guide/signals
+- https://angular.dev/guide/zoneless
+- https://angular.dev/guide/routing
 
 ## Validacion
 
