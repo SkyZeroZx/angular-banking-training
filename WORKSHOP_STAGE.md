@@ -1,34 +1,29 @@
 # Workshop 02 - UI propia, CVA y Formularios
 
-Esta rama nace desde `workshop/01-shell-routing-signals` y agrega el segundo bloque real de construccion.
+Segundo corte: la app pasa de HTML simple a UI reutilizable, formularios compuestos y rutas create/edit.
 
-## Codigo agregado en esta sesion
+## Teoria
 
-- UI compartida: button, icon, data table, paginator, modal, dialog, toast y control errors.
-- Controles CVA: input, select y checkbox.
-- Formularios compuestos: cliente, cuenta y movimiento.
-- Selects remotos paginados: cliente y cuenta.
-- Rutas de crear/editar clientes, cuentas y movimientos.
-- Servicios de cuenta y movimiento.
-- `withComponentInputBinding()` para rutas de edicion.
+- UI propia: componentes chicos, inputs claros y contratos estables.
+- CVA: `ControlValueAccessor` para integrar controles custom con Reactive Forms.
+- Validacion reusable: `NG_VALIDATORS` cuando el componente expone reglas del formulario.
+- Routing de edicion: `withComponentInputBinding()` para params como inputs.
 
-## Aun no existe en esta rama
+## Estructura
 
-- Reportes.
-- Error interceptor.
-- Global error handler.
-- Analytics/click tracking.
-- Specs avanzados; solo queda smoke test de app.
+- `shared/ui/button`, `icon`, `data-table`, `paginator`, `modal`, `dialog`, `toast`.
+- `shared/ui/form-field/input-field`, `select-field`, `checkbox-field`.
+- `pages/clients/components/client-form.component.ts`.
+- `pages/accounts/components/account-form.component.ts`.
+- `pages/movements/components/movement-form.component.ts`.
+- `shared/components/base-paged-select.ts`, `client-select-field`, `account-select-field`.
 
-## Guion de 1h 30m
+## Practica
 
-1. 0-10 min: comparar rama 01 vs 02: ahora aparecen `shared/ui`, rutas de create/edit y nuevas paginas.
-2. 10-24 min: `shared/ui/button`, `shared/ui/icon`, `shared/ui/data-table` y `shared/ui/paginator`: contratos chicos de UI.
-3. 24-42 min: `shared/ui/form-field/input-field`, `select-field` y `checkbox-field`: CVA y errores de formulario.
-4. 42-58 min: `ClientFormComponent`, `AccountFormComponent` y `MovementFormComponent`: formularios compuestos con `NG_VALUE_ACCESSOR` y `NG_VALIDATORS`.
-5. 58-72 min: `shared/components/base-paged-select.ts`, `ClientSelectFieldComponent` y `AccountSelectFieldComponent`: selects remotos paginados.
-6. 72-82 min: `withComponentInputBinding()` en rutas de edicion de clientes/cuentas.
-7. 82-90 min: ejercicio: agregar un campo nuevo en `AccountFormComponent` y consumirlo desde create/edit.
+1. Comparar rama 01 vs 02.
+2. Revisar contrato de `DataTableComponent` y `PaginatorComponent`.
+3. Revisar un CVA simple y un formulario compuesto.
+4. Ejercicio: agregar un campo en `AccountFormComponent` y consumirlo en create/edit.
 
 ## Validacion
 
