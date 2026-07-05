@@ -1,33 +1,26 @@
 # Workshop 01 - Shell, Routing y Signals
 
-Esta rama es el primer corte ejecutable del workshop. La app tiene solo login, layout autenticado y listado de clientes con HTML simple.
+Primer corte ejecutable: login, shell autenticado y clientes read-only con HTML simple.
 
-## Alcance
+## Teoria
 
-- Bootstrap standalone con `ApplicationConfig`.
-- Rutas lazy con `loadComponent`.
-- Guards de acceso publico/privado.
-- Layout autenticado con header, sidebar y footer.
-- Lista de clientes con `signal`, `computed`, `linkedSignal`, `toSignal` y `toObservable`.
-- Tabla HTML simple como UI de lectura.
-- Smoke test minimo de arranque.
+- Bootstrap standalone: `main.ts`, `app.ts`, `app.config.ts`.
+- Routing moderno: `loadComponent`, guards funcionales y layout protegido.
+- Estado local: `signal`, `computed`, `linkedSignal`, `toSignal`, `toObservable`.
+- Change detection moderno: ver [CHANGE_DETECTION_TEMARIO.md](CHANGE_DETECTION_TEMARIO.md).
 
-## Fuera de este corte
+## Estructura
 
-- Formularios de creacion/edicion.
-- CVA y controles custom.
-- UI compartida.
-- Reportes.
-- Sesiones avanzadas de testing.
+- `core/services/auth`, `core/services/client`, `core/guards/auth.guard.ts`.
+- `pages/login`, `layout/content`, `pages/clients`.
+- Sin CVA, sin UI compartida, sin reportes, sin testing avanzado.
 
-## Guion de 1h 30m
+## Practica
 
-1. 0-10 min: dominio y ejecucion local.
-2. 10-22 min: `main.ts`, `app.ts` y `app.config.ts`: bootstrap standalone, `provideRouter` y `provideHttpClient`.
-3. 22-38 min: `app.routes.ts` y `auth.guard.ts`: login publico, shell protegido y lazy `loadComponent`.
-4. 38-52 min: `login.component.ts`: primer reactive form con inputs HTML nativos y submit contra `AuthService`.
-5. 52-75 min: `clients.component.ts` y `clients.component.html`: signals, RxJS interop, busqueda y tabla HTML simple.
-6. 75-90 min: ejercicio: agregar una columna visible o un filtro simple en `ClientsComponent`.
+1. Ejecutar app y entender flujo login -> shell -> clientes.
+2. Seguir rutas en `app.routes.ts`.
+3. Leer estado reactivo en `clients.component.ts`.
+4. Ejercicio: agregar una columna o filtro simple en clientes.
 
 ## Validacion
 
@@ -36,9 +29,3 @@ cd frontend/banking-front
 npm test -- --runInBand
 npm run build
 ```
-
-## Base didactica
-
-- Scaffolding: soporte alto al inicio y retiro gradual.
-- "I do, We do, You do": demo, practica guiada y ejercicio corto.
-- Orden basado en docs Angular de routing, signals y component testing.
