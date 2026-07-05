@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { authGuard, publicGuard } from '@core/guards/auth.guard';
+import { routingDemoNameResolver } from '@app/pages/workshop/routing/routing-demo.resolver';
 
 export const appRoutes: Route[] = [
   {
@@ -25,6 +26,52 @@ export const appRoutes: Route[] = [
           import('@app/pages/clients/clients.component').then(
             (m) => m.ClientsComponent,
           ),
+      },
+      {
+        path: 'workshop/change-detection',
+        title: 'Workshop 01 | Change Detection',
+        loadComponent: () =>
+          import('@app/pages/workshop/change-detection/change-detection-lab.component').then(
+            (m) => m.ChangeDetectionLabComponent,
+          ),
+      },
+      {
+        path: 'workshop/routing',
+        title: 'Workshop 01 | Routing Lab',
+        loadComponent: () =>
+          import('@app/pages/workshop/routing/routing-lab.component').then(
+            (m) => m.RoutingLabComponent,
+          ),
+        children: [
+          { path: '', redirectTo: 'overview', pathMatch: 'full' },
+          {
+            path: 'overview',
+            title: 'Workshop 01 | Routing Overview',
+            loadComponent: () =>
+              import('@app/pages/workshop/routing/routing-overview.component').then(
+                (m) => m.RoutingOverviewComponent,
+              ),
+          },
+          { path: 'redirect', redirectTo: 'overview', pathMatch: 'full' },
+          {
+            path: 'detalle/:id',
+            title: 'Workshop 01 | Route Inputs',
+            data: { topic: 'Route data + resolver + component inputs' },
+            resolve: { resolvedName: routingDemoNameResolver },
+            loadComponent: () =>
+              import('@app/pages/workshop/routing/routing-detail.component').then(
+                (m) => m.RoutingDetailComponent,
+              ),
+          },
+          {
+            path: '**',
+            title: 'Workshop 01 | Routing Not Found',
+            loadComponent: () =>
+              import('@app/pages/workshop/routing/routing-not-found.component').then(
+                (m) => m.RoutingNotFoundComponent,
+              ),
+          },
+        ],
       },
     ],
   },

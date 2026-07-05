@@ -9,5 +9,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SideBarComponent {
-  readonly links = [{ path: '/clientes', label: 'Clientes' }];
+  readonly links = [
+    { path: '/clientes', label: 'Clientes' },
+    { path: '/workshop/change-detection', label: 'Change detection' },
+    { path: '/workshop/routing', label: 'Routing lab' },
+  ];
 }

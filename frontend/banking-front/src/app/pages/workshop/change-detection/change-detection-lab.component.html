@@ -1,0 +1,70 @@
+<section class="lab">
+  <header class="lab__header">
+    <p class="lab__eyebrow">Workshop 01</p>
+    <h1 class="lab__title">Change detection y zoneless</h1>
+    <p class="lab__intro">
+      Angular 21 no depende de ZoneJS por defecto. Esta pagina muestra que debe
+      notificar a Angular cuando cambia estado fuera de APIs Angular.
+    </p>
+  </header>
+
+  <div class="lab__grid">
+    <article class="lab__panel">
+      <h2>Signal en template</h2>
+      <p>
+        Valor: <strong>{{ signalCount() }}</strong>
+      </p>
+      <p>
+        Computed: <strong>{{ doubledSignalCount() }}</strong>
+      </p>
+      <button type="button" class="lab__button" (click)="incrementSignal()">
+        Incrementar signal
+      </button>
+    </article>
+
+    <article class="lab__panel">
+      <h2>Timer + propiedad normal</h2>
+      <p>{{ plainStatus }}</p>
+      <div class="lab__actions">
+        <button
+          type="button"
+          class="lab__button"
+          (click)="schedulePlainMutation()"
+        >
+          Mutar sin notificar
+        </button>
+        <button
+          type="button"
+          class="lab__button lab__button--secondary"
+          (click)="forceLocalCheck()"
+        >
+          detectChanges()
+        </button>
+      </div>
+    </article>
+
+    <article class="lab__panel">
+      <h2>Timer + signal</h2>
+      <p>{{ signalStatus() }}</p>
+      <button
+        type="button"
+        class="lab__button"
+        (click)="scheduleSignalMutation()"
+      >
+        Mutar signal
+      </button>
+    </article>
+
+    <article class="lab__panel">
+      <h2>Timer + markForCheck</h2>
+      <p>{{ notifiedStatus }}</p>
+      <button
+        type="button"
+        class="lab__button"
+        (click)="scheduleNotifiedMutation()"
+      >
+        Mutar y notificar
+      </button>
+    </article>
+  </div>
+</section>

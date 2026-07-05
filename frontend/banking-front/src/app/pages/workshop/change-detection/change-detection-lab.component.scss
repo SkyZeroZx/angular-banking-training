@@ -1,0 +1,77 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.lab {
+  @include element('header') {
+    margin-bottom: $spacing-6;
+  }
+
+  @include element('eyebrow') {
+    margin: 0 0 $spacing-2;
+    color: $color-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+  }
+
+  @include element('title') {
+    @include text-heading;
+    margin: 0 0 $spacing-3;
+    font-size: $font-size-2xl;
+  }
+
+  @include element('intro') {
+    max-width: 760px;
+    margin: 0;
+    color: $color-text-secondary;
+  }
+
+  @include element('grid') {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $spacing-4;
+
+    @include respond-below(md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @include element('panel') {
+    min-height: 190px;
+    padding: $spacing-5;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+
+    h2 {
+      margin: 0 0 $spacing-3;
+      font-size: $font-size-lg;
+    }
+
+    p {
+      margin: 0 0 $spacing-4;
+      color: $color-text-secondary;
+    }
+  }
+
+  @include element('actions') {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+  }
+
+  @include element('button') {
+    padding: $spacing-2 $spacing-4;
+    border: 1px solid $color-primary;
+    border-radius: $radius-md;
+    background: $color-primary;
+    color: $color-text-inverse;
+    cursor: pointer;
+    font-weight: $font-weight-semibold;
+    @include focus-visible;
+
+    @include modifier('secondary') {
+      background: $color-white;
+      color: $color-primary;
+    }
+  }
+}

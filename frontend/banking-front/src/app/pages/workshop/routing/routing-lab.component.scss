@@ -1,0 +1,78 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.routing-lab {
+  @include element('header') {
+    margin-bottom: $spacing-5;
+  }
+
+  @include element('eyebrow') {
+    margin: 0 0 $spacing-2;
+    color: $color-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+  }
+
+  @include element('title') {
+    @include text-heading;
+    margin: 0 0 $spacing-3;
+    font-size: $font-size-2xl;
+  }
+
+  @include element('intro') {
+    max-width: 780px;
+    margin: 0;
+    color: $color-text-secondary;
+  }
+
+  @include element('tabs') {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+    margin-bottom: $spacing-5;
+  }
+
+  @include element('tab') {
+    padding: $spacing-2 $spacing-3;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    color: $color-text-primary;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+    @include focus-visible;
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+      background: $color-surface;
+    }
+
+    @include modifier('active') {
+      border-color: $color-primary;
+      color: $color-primary;
+      background: $color-surface;
+    }
+  }
+}
+
+.routing-card {
+  padding: $spacing-5;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: $color-white;
+
+  h2 {
+    margin: 0 0 $spacing-3;
+    font-size: $font-size-lg;
+  }
+
+  p,
+  li {
+    color: $color-text-secondary;
+  }
+
+  code {
+    color: $color-primary;
+    font-weight: $font-weight-semibold;
+  }
+}

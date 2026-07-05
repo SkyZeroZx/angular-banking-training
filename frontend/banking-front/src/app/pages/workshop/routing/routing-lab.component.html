@@ -1,0 +1,32 @@
+<section class="routing-lab">
+  <header class="routing-lab__header">
+    <p class="routing-lab__eyebrow">Workshop 01</p>
+    <h1 class="routing-lab__title">Routing lab</h1>
+    <p class="routing-lab__intro">
+      Ejemplos minimos de rutas hijas, redirect, query params, resolver,
+      component input binding y wildcard.
+    </p>
+  </header>
+
+  <nav class="routing-lab__tabs" aria-label="Demos de routing">
+    <a
+      routerLink="overview"
+      routerLinkActive="routing-lab__tab--active"
+      class="routing-lab__tab"
+    >
+      Overview
+    </a>
+    <a
+      [routerLink]="['detalle', '42']"
+      [queryParams]="{ mode: 'input-binding' }"
+      routerLinkActive="routing-lab__tab--active"
+      class="routing-lab__tab"
+    >
+      Route inputs
+    </a>
+    <a routerLink="redirect" class="routing-lab__tab">Redirect</a>
+    <a routerLink="ruta-inexistente" class="routing-lab__tab">Wildcard</a>
+  </nav>
+
+  <router-outlet [routerOutletData]="outletData" />
+</section>
