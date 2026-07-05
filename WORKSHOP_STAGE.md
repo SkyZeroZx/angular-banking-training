@@ -18,12 +18,14 @@ Primer corte de testing: componentes compartidos, CVA y directivas pequenas.
 - Specs de `client-select-field` y `account-select-field`.
 - Specs de `data-table`, `paginator`, `modal`, `dialog`, `toast`, `control-error`.
 
-## Practica
+## Recorrido
 
-1. Comparar rama 03 vs 04.
-2. Leer `element.spec-helper.ts` y usarlo en un spec existente.
-3. Revisar un CVA con host dummy.
-4. Ejercicio: agregar un caso disabled/touched sin leer estado privado.
+1. Diferencia estructural entre rama 03 y rama 04.
+2. Helpers DOM: `element.spec-helper.ts` y `flush-macrotask.ts`.
+3. Test de CVA con host dummy y `FormControl`.
+4. Tests de selects remotos con doubles de servicio.
+5. Tests de UI compartida: table, paginator, modal, dialog, toast.
+6. Directivas pequenas con DOM real minimo.
 
 ## Validacion
 

@@ -6,6 +6,17 @@ Esta rama agrega la primera capa seria de tests: componentes compartidos, CVA, d
 
 Probar comportamiento visible y contratos publicos de componentes Angular sin acoplar tests a detalles privados.
 
+## Temario de sesion
+
+1. Diferencia entre unit test e integration test de componente.
+2. `TestBed` como runtime Angular controlado.
+3. Helpers DOM y `data-testid`.
+4. Host dummy para CVA.
+5. Contrato CVA: model -> view, view -> model, touched, disabled.
+6. Specs de UI compartida por contrato publico.
+7. Directivas pequenas con DOM real.
+8. Criterios para evitar asserts de implementacion.
+
 ## 1. Unit test vs integration test de componente
 
 Un componente Angular combina clase, template, bindings, inputs, outputs y DOM. Probar solo la clase puede servir para logica pura, pero no prueba que el usuario vea o pueda ejecutar algo.
