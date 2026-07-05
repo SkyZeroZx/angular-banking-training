@@ -6,6 +6,17 @@ Esta rama toma la base navegable de la rama 01 y agrega UI reusable, formularios
 
 Convertir pantallas HTML simples en una app con contratos UI propios y formularios que se integran con Reactive Forms sin duplicar logica.
 
+## Temario de sesion
+
+1. Evolucion desde HTML simple hacia UI compartida.
+2. Contratos de componentes: inputs, outputs, contenido proyectado y estados.
+3. `DataTableComponent` y `PaginatorComponent` como contratos de lectura.
+4. CVA: integracion con Angular Forms.
+5. Validacion reusable con `NG_VALIDATORS`.
+6. Formularios compuestos por feature.
+7. Selects remotos paginados y abstraccion base.
+8. Rutas create/edit y `withComponentInputBinding()`.
+
 ## 1. UI propia como contrato
 
 Una UI compartida no deberia ser un conjunto de estilos sueltos. Cada componente debe tener un contrato pequeno:

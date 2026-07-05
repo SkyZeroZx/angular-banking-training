@@ -18,12 +18,14 @@ Segundo corte: la app pasa de HTML simple a UI reutilizable, formularios compues
 - `pages/movements/components/movement-form.component.ts`.
 - `shared/components/base-paged-select.ts`, `client-select-field`, `account-select-field`.
 
-## Practica
+## Recorrido
 
-1. Comparar rama 01 vs 02.
-2. Revisar contrato de `DataTableComponent` y `PaginatorComponent`.
-3. Revisar un CVA simple y un formulario compuesto.
-4. Ejercicio: agregar un campo en `AccountFormComponent` y consumirlo en create/edit.
+1. Diferencia estructural entre rama 01 y rama 02.
+2. Contratos de UI en `DataTableComponent` y `PaginatorComponent`.
+3. Campos CVA en `shared/ui/form-field`.
+4. Formularios compuestos de clientes, cuentas y movimientos.
+5. Selects remotos paginados y `base-paged-select.ts`.
+6. Edicion con route input binding.
 
 ## Validacion
 
