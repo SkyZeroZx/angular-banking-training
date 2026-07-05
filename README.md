@@ -9,7 +9,7 @@ Lee [WORKSHOP_STAGE.md](WORKSHOP_STAGE.md) para ver como dictar esta sesion y do
 Esta rama 01 incluye dos labs didacticos aislados. No son parte del dominio bancario; existen para explicar Angular moderno antes de construir features mas grandes.
 
 - `/workshop/change-detection`: signals, zoneless, mutaciones asincronas, `markForCheck` y `detectChanges`.
-- `/workshop/routing`: rutas hijas, redirect, wildcard local, resolver, query params, `routerOutletData` y `withComponentInputBinding()`.
+- `/workshop/routing`: rutas hijas, redirect string, `RedirectFunction`, wildcard local, resolver, query params, `routerOutletData` y `withComponentInputBinding()`.
 
 ## Ramas
 
@@ -91,12 +91,13 @@ Esta sesion presenta la base moderna de Angular: aplicacion standalone, routing 
 ## Temario
 
 1. Bootstrap standalone con `main.ts`, `app.ts` y `app.config.ts`.
-2. Providers globales: `provideRouter`, `withComponentInputBinding`, `provideHttpClient`.
+2. Providers globales: `provideRouter`, `withComponentInputBinding`, `withInMemoryScrolling`, `withNavigationErrorHandler`, `provideHttpClient`.
 3. Router principal: `loadComponent`, children, redirects, wildcard y guards.
 4. Shell autenticado: layout, sidebar y `router-outlet`.
 5. Estado local de clientes con `signal`, `computed`, `linkedSignal`, `toSignal` y `toObservable`.
 6. Change detection zoneless: signals, callbacks asincronos, `markForCheck`, `detectChanges`.
 7. Routing lab: route params, query params, resolver, wildcard local y `routerOutletData`.
+8. Routing para app real: `RedirectFunction`, `canMatch`, route providers, resolver redirects, navigation error handler y scroll restoration.
 
 ## Teoria Angular
 
@@ -137,6 +138,55 @@ export const appRoutes = [
 ];
 ```
 
+`loadComponent` y `loadChildren` corren dentro de un contexto de inyeccion del route. Eso permite decisiones de carga basadas en providers disponibles para esa ruta.
+
+Ejemplo minimo:
+
+```ts
+{
+  path: 'dashboard',
+  loadComponent: () => {
+    const flags = inject(FeatureFlags);
+
+    return flags.useNewDashboard()
+      ? import('./new-dashboard').then((m) => m.NewDashboard)
+      : import('./dashboard').then((m) => m.Dashboard);
+  },
+}
+```
+
+### RedirectFunction con injection context
+
+`redirectTo` no solo acepta strings. Tambien acepta una `RedirectFunction`, que corre en injection context y puede usar `inject()`. Es util para redirecciones de migracion, defaults dinamicos o URLs legacy que dependen de configuracion.
+
+La funcion recibe un snapshot parcial porque el matching aun no termina. Por eso no debe asumir datos que aparecen despues de activar la ruta, como resolvers.
+
+Ejemplo minimo:
+
+```ts
+export const DEFAULT_CLIENT_ID = new InjectionToken<string>(
+  "default client id",
+);
+
+export const clientRedirect: RedirectFunction = (route) => {
+  const router = inject(Router);
+  const defaultId = inject(DEFAULT_CLIENT_ID);
+  const id = route.queryParams["id"] ?? defaultId;
+
+  return router.createUrlTree(["/clientes", id], {
+    queryParams: { source: "redirect-function" },
+  });
+};
+```
+
+```ts
+{
+  path: 'cliente-actual',
+  providers: [{ provide: DEFAULT_CLIENT_ID, useValue: '42' }],
+  redirectTo: clientRedirect,
+}
+```
+
 ### Guards funcionales
 
 Un guard funcional usa `inject()` y devuelve `true`, `false`, `UrlTree`, `Promise` u `Observable`. Sirve para navegacion y UX; la autorizacion real tambien se valida en backend.
@@ -150,6 +200,45 @@ export const authGuard: CanActivateFn = () => {
 
   return auth.isAuthenticated() ? true : router.parseUrl("/login");
 };
+```
+
+### CanMatch para feature gating
+
+`canMatch` decide si una ruta participa en el matching. Si devuelve `false`, Angular sigue buscando otra ruta compatible. En apps reales sirve para feature flags, permisos por tenant o variantes de producto.
+
+Ejemplo minimo:
+
+```ts
+export const betaCanMatch: CanMatchFn = () => {
+  const flags = inject(FeatureFlags);
+
+  return flags.enabled("new-accounts");
+};
+```
+
+```ts
+[
+  {
+    path: "cuentas",
+    canMatch: [betaCanMatch],
+    loadComponent: () => import("./new-accounts"),
+  },
+  { path: "cuentas", loadComponent: () => import("./accounts") },
+];
+```
+
+### Route providers
+
+Una ruta puede declarar providers propios. Angular crea un `EnvironmentInjector` para esa ruta y sus hijos. Es util para scopes de feature, configuracion local, adapters o tokens que no deben ser globales.
+
+Ejemplo minimo:
+
+```ts
+{
+  path: 'reportes',
+  providers: [{ provide: REPORT_PAGE_SIZE, useValue: 20 }],
+  loadComponent: () => import('./reports').then((m) => m.ReportsComponent),
+}
 ```
 
 ### Signals y RxJS interop
@@ -199,7 +288,7 @@ connect(widget: { onReady(callback: () => void): void }) {
 
 ### Router avanzado del lab
 
-El lab `/workshop/routing` muestra child routes, redirect local, wildcard local, resolver, query params, `withComponentInputBinding()` y `routerOutletData`.
+El lab `/workshop/routing` muestra child routes, redirect local, `RedirectFunction`, wildcard local, resolver, query params, `withComponentInputBinding()` y `routerOutletData`.
 
 Ejemplo minimo:
 
@@ -220,10 +309,83 @@ export class Detail {
 }
 ```
 
+### Resolvers y RedirectCommand
+
+Un resolver carga datos antes de activar la ruta. Si no puede obtener datos criticos, puede devolver un `RedirectCommand` para cancelar esa activacion y navegar a otro destino.
+
+Ejemplo minimo:
+
+```ts
+export const clientResolver: ResolveFn<Client | RedirectCommand> = (route) => {
+  const router = inject(Router);
+  const service = inject(ClientService);
+  const id = route.paramMap.get("id")!;
+
+  return service
+    .getById(id)
+    .pipe(
+      catchError(() => of(new RedirectCommand(router.parseUrl("/clientes")))),
+    );
+};
+```
+
+### Navigation error handler
+
+`withNavigationErrorHandler` centraliza errores de navegacion: lazy imports fallidos, resolvers con error no manejado o fallos inesperados del router. En apps reales evita pantallas rotas sin fallback.
+
+Ejemplo minimo:
+
+```ts
+provideRouter(
+  appRoutes,
+  withNavigationErrorHandler((error) => {
+    const router = inject(Router);
+    console.error(error);
+
+    return new RedirectCommand(router.parseUrl("/clientes"));
+  }),
+);
+```
+
+En esta rama, `app.config.ts` usa el mismo patrón para mandar fallos de navegación a `/clientes`.
+
+### Router config util
+
+`withRouterConfig` permite ajustar comportamiento global del router. Dos opciones utiles en apps reales:
+
+- `defaultQueryParamsHandling: 'merge'`: conserva filtros/paginacion por defecto.
+- `urlUpdateStrategy: 'eager'`: escribe URL al iniciar navegacion, util para diagnostico de guards o errores largos.
+
+Ejemplo minimo:
+
+```ts
+provideRouter(
+  appRoutes,
+  withRouterConfig({
+    defaultQueryParamsHandling: "merge",
+  }),
+);
+```
+
+### Preloading y scroll
+
+Para apps con varias rutas `loadChildren`, `withPreloading(PreloadAllModules)` puede mejorar navegacion posterior. Para UX de documentos o listados, `withInMemoryScrolling` ayuda con scroll restoration y anchors.
+
+Ejemplo minimo:
+
+```ts
+provideRouter(
+  appRoutes,
+  withInMemoryScrolling({ scrollPositionRestoration: "enabled" }),
+);
+```
+
+En esta rama se activa `scrollPositionRestoration`. `withPreloading` queda como criterio para features grandes cargadas con `loadChildren`.
+
 ## Demos disponibles
 
 - `/workshop/change-detection`: compara signal, propiedad normal, `markForCheck` y `detectChanges`.
-- `/workshop/routing`: muestra rutas hijas, resolver, wildcard local y component input binding.
+- `/workshop/routing`: muestra rutas hijas, redirect local, `RedirectFunction`, resolver, wildcard local y component input binding.
 
 ## Documentacion oficial
 
@@ -232,5 +394,10 @@ export class Detail {
 - Zoneless: https://angular.dev/guide/zoneless
 - Routing overview: https://angular.dev/guide/routing
 - Define routes: https://angular.dev/guide/routing/define-routes
+- Redirecting routes: https://angular.dev/guide/routing/redirecting-routes
+- Route loading strategies: https://angular.dev/guide/routing/loading-strategies
 - Route guards: https://angular.dev/guide/routing/route-guards
 - Data resolvers: https://angular.dev/guide/routing/data-resolvers
+- Customizing route behavior: https://angular.dev/guide/routing/customizing-route-behavior
+- `RedirectFunction`: https://angular.dev/api/router/RedirectFunction
+- `Route`: https://angular.dev/api/router/Route

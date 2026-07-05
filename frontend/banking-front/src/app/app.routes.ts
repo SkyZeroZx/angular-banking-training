@@ -1,6 +1,10 @@
 import { Route } from '@angular/router';
 import { authGuard, publicGuard } from '@core/guards/auth.guard';
 import { routingDemoNameResolver } from '@app/workshop/routing/routing-demo.resolver';
+import {
+  ROUTING_DEMO_DEFAULT_ID,
+  routingDemoRedirect,
+} from '@app/workshop/routing/routing-demo.redirect';
 
 export const appRoutes: Route[] = [
   {
@@ -38,6 +42,7 @@ export const appRoutes: Route[] = [
       {
         path: 'workshop/routing',
         title: 'Workshop 01 | Routing Lab',
+        providers: [{ provide: ROUTING_DEMO_DEFAULT_ID, useValue: '42' }],
         loadComponent: () =>
           import('@app/workshop/routing/routing-lab.component').then(
             (m) => m.RoutingLabComponent,
@@ -53,6 +58,11 @@ export const appRoutes: Route[] = [
               ),
           },
           { path: 'redirect', redirectTo: 'overview', pathMatch: 'full' },
+          {
+            path: 'redirect-fn',
+            redirectTo: routingDemoRedirect,
+            pathMatch: 'full',
+          },
           {
             path: 'detalle/:id',
             title: 'Workshop 01 | Route Inputs',

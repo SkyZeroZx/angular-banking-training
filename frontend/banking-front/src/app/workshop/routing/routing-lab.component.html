@@ -25,6 +25,13 @@
       Route inputs
     </a>
     <a routerLink="redirect" class="routing-lab__tab">Redirect</a>
+    <a
+      routerLink="redirect-fn"
+      [queryParams]="{ id: '77' }"
+      class="routing-lab__tab"
+    >
+      Redirect fn
+    </a>
     <a routerLink="ruta-inexistente" class="routing-lab__tab">Wildcard</a>
   </nav>
 

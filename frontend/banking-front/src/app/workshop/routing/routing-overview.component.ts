@@ -12,6 +12,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <ul>
         <li><code>workshop/routing</code> redirige a <code>overview</code>.</li>
         <li>Este contenido vive en un <code>router-outlet</code> hijo.</li>
+        <li>
+          <code>redirect-fn</code> usa una <code>RedirectFunction</code> con DI.
+        </li>
         <li>El link wildcard prueba la ruta catch-all de este lab.</li>
       </ul>
     </article>
