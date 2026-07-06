@@ -2,14 +2,19 @@
 
 Corte final: suite completa con guards, rutas, pages y layout.
 
+## Material
+
+- [Inicio local](README.md).
+- [Teoria y ejemplos](WORKSHOP_THEORY.md).
+
 ## Teoria
 
-- [Integration test Angular](README.md#integration-test-angular).
-- [RouterTestingHarness](README.md#routertestingharness).
-- [Guards por navegacion](README.md#guards-por-navegacion).
-- [Route params y component input binding](README.md#route-params-y-component-input-binding).
-- [Page specs](README.md#page-specs).
-- [Testing boundaries](README.md#testing-boundaries).
+- [Integration test Angular](WORKSHOP_THEORY.md#integration-test-angular).
+- [RouterTestingHarness](WORKSHOP_THEORY.md#routertestingharness).
+- [Guards por navegacion](WORKSHOP_THEORY.md#guards-por-navegacion).
+- [Route params y component input binding](WORKSHOP_THEORY.md#route-params-y-component-input-binding).
+- [Page specs](WORKSHOP_THEORY.md#page-specs).
+- [Testing boundaries](WORKSHOP_THEORY.md#testing-boundaries).
 
 ## Estructura
 
