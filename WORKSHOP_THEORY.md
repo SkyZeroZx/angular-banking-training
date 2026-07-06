@@ -194,6 +194,116 @@ connect(widget: { onReady(callback: () => void): void }) {
 }
 ```
 
+### Lifecycle hooks modernos
+
+El ciclo de vida de un componente sigue existiendo, pero Angular moderno reduce cuanta logica necesita vivir en hooks. Estado derivado va mejor en `computed`, reacciones a signals van en `effect`, cleanup de streams va en `takeUntilDestroyed`, y DOM manual va en render callbacks.
+
+Hooks clasicos utiles:
+
+- `ngOnChanges`: reaccionar a cambios de inputs cuando necesitas `previousValue`, `currentValue` o `firstChange`.
+- `ngOnInit`: inicializacion que depende de inputs ya seteados. No debe reemplazar field initializers simples.
+- `ngAfterContentInit` y `ngAfterViewInit`: leer content/view queries ya inicializadas.
+- `ngOnDestroy`: liberar recursos manuales si no usas `DestroyRef`.
+
+Hooks que conviene evitar salvo caso puntual:
+
+- `ngDoCheck`: engancha chequeos manuales frecuentes; suele indicar estado no modelado de forma reactiva.
+- `ngAfterContentChecked` y `ngAfterViewChecked`: corren mucho y no son buen lugar para mutar estado.
+
+Ejemplo minimo:
+
+```ts
+export class ClientCard implements OnChanges, OnInit {
+  readonly id = input.required<string>();
+  readonly title = computed(() => `Cliente ${this.id()}`);
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["id"]?.firstChange) {
+      console.log("input inicial", changes["id"].currentValue);
+    }
+  }
+
+  ngOnInit(): void {
+    console.log("inputs disponibles", this.id());
+  }
+}
+```
+
+### Render callbacks
+
+`afterNextRender` y `afterEveryRender` son APIs modernas para trabajo posterior al render. No son metodos de clase; son funciones que se llaman en un injection context, normalmente constructor o inicializador. Sirven para foco, mediciones, integracion DOM puntual o librerias que necesitan elementos ya renderizados.
+
+No corren durante SSR ni pre-render. Por eso son el sitio correcto para codigo que depende del browser.
+
+Ejemplo minimo:
+
+```ts
+export class SearchBox {
+  private readonly host = inject(ElementRef<HTMLElement>);
+
+  constructor() {
+    afterNextRender({
+      write: () => {
+        this.host.nativeElement.classList.add("ready");
+        return true;
+      },
+      read: (didWrite) => {
+        if (didWrite) {
+          console.log(this.host.nativeElement.getBoundingClientRect().width);
+        }
+      },
+    });
+  }
+}
+```
+
+La separacion `write` -> `read` evita layout thrashing: primero mutas layout, luego mides layout.
+
+### afterRenderEffect
+
+`afterRenderEffect` conecta signals con trabajo DOM posterior al render. Es util para integrar una libreria imperativa que debe actualizarse despues de que Angular aplico cambios al DOM. Si solo necesitas reaccionar a estado sin DOM, usa `effect`. Si puedes usar `ResizeObserver`, `MutationObserver` o `IntersectionObserver`, suelen ser mejor herramienta.
+
+Ejemplo minimo:
+
+```ts
+export class ChartHost {
+  readonly data = input.required<ChartData>();
+  readonly canvas = viewChild.required<ElementRef<HTMLCanvasElement>>("chart");
+
+  constructor() {
+    afterNextRender({
+      write: () => createChart(this.canvas().nativeElement, this.data()),
+    });
+
+    afterRenderEffect(() => {
+      updateChart(this.data());
+    });
+  }
+}
+```
+
+### DestroyRef y takeUntilDestroyed
+
+`DestroyRef` permite registrar cleanup sin implementar `OnDestroy`. En RxJS, `takeUntilDestroyed` completa la suscripcion cuando se destruye el contexto. Dentro de constructor/injection context no hace falta pasar `DestroyRef`; fuera de ese contexto conviene pasarlo explicitamente.
+
+Ejemplo minimo:
+
+```ts
+export class NotificationsPanel {
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly notifications = inject(NotificationsService);
+
+  start(): void {
+    this.notifications
+      .stream()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((message) => console.log(message));
+  }
+}
+```
+
+Regla practica: si Angular creo el recurso en un contexto inyectable, intenta que Angular tambien lo limpie. Si el recurso viene de una API externa, registra cleanup con `DestroyRef.onDestroy`, `takeUntilDestroyed` o el `onCleanup` de un `effect`.
+
 ### Router avanzado del lab
 
 El lab `/workshop/routing` muestra child routes, redirect local, `RedirectFunction`, wildcard local, resolver, query params, `withComponentInputBinding()` y `routerOutletData`.
@@ -298,7 +408,12 @@ En esta rama se activa `scrollPositionRestoration`. `withPreloading` queda como 
 ## Documentacion oficial
 
 - Components: https://angular.dev/guide/components
+- Component lifecycle: https://angular.dev/guide/components/lifecycle
+- DOM APIs: https://angular.dev/guide/components/dom-apis
 - Signals: https://angular.dev/guide/signals
+- Signal effects: https://angular.dev/guide/signals/effect
+- `afterRenderEffect`: https://angular.dev/api/core/afterRenderEffect
+- `takeUntilDestroyed`: https://angular.dev/ecosystem/rxjs-interop/take-until-destroyed
 - Zoneless: https://angular.dev/guide/zoneless
 - Routing overview: https://angular.dev/guide/routing
 - Define routes: https://angular.dev/guide/routing/define-routes
