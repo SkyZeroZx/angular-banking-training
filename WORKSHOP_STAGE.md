@@ -1,14 +1,19 @@
-# Workshop 04 - Testing de Componentes, DOM Helpers y CVA
+﻿# Workshop 04 - Testing de Componentes, DOM Helpers y CVA
 
 Primer corte de testing: componentes compartidos, CVA y directivas pequenas.
 
+## Material
+
+- [Inicio local](README.md).
+- [Teoria y ejemplos](WORKSHOP_THEORY.md).
+
 ## Teoria
 
-- [TestBed y componente real](README.md#testbed-y-componente-real).
-- [Testing por DOM](README.md#testing-por-dom).
-- [Host dummy para CVA](README.md#host-dummy-para-cva).
-- [Contrato CVA](README.md#contrato-cva).
-- [UI compartida](README.md#ui-compartida).
+- [TestBed y componente real](WORKSHOP_THEORY.md#testbed-y-componente-real).
+- [Testing por DOM](WORKSHOP_THEORY.md#testing-por-dom).
+- [Host dummy para CVA](WORKSHOP_THEORY.md#host-dummy-para-cva).
+- [Contrato CVA](WORKSHOP_THEORY.md#contrato-cva).
+- [UI compartida](WORKSHOP_THEORY.md#ui-compartida).
 
 ## Estructura
 
