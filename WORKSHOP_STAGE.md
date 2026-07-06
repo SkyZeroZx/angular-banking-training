@@ -1,15 +1,20 @@
-# Workshop 02 - UI propia, CVA y Formularios
+﻿# Workshop 02 - UI propia, CVA y Formularios
 
 Segundo corte: la app pasa de HTML simple a UI reutilizable, formularios compuestos y rutas create/edit.
 
+## Material
+
+- [Inicio local](README.md).
+- [Teoria y ejemplos](WORKSHOP_THEORY.md).
+
 ## Teoria
 
-- [Componentes UI como contrato](README.md#componentes-ui-como-contrato).
-- [ControlValueAccessor](README.md#controlvalueaccessor).
-- [Validadores custom](README.md#validadores-custom).
-- [Formularios compuestos](README.md#formularios-compuestos).
-- [Selects remotos paginados](README.md#selects-remotos-paginados).
-- [Route input binding](README.md#route-input-binding).
+- [Componentes UI como contrato](WORKSHOP_THEORY.md#componentes-ui-como-contrato).
+- [ControlValueAccessor](WORKSHOP_THEORY.md#controlvalueaccessor).
+- [Validadores custom](WORKSHOP_THEORY.md#validadores-custom).
+- [Formularios compuestos](WORKSHOP_THEORY.md#formularios-compuestos).
+- [Selects remotos paginados](WORKSHOP_THEORY.md#selects-remotos-paginados).
+- [Route input binding](WORKSHOP_THEORY.md#route-input-binding).
 
 ## Estructura
 
