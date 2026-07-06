@@ -1,15 +1,20 @@
-# Workshop 03 - HTTP, Errores y Analytics
+﻿# Workshop 03 - HTTP, Errores y Analytics
 
 Tercer corte: la app funcional queda completa con reportes y capa transversal.
 
+## Material
+
+- [Inicio local](README.md).
+- [Teoria y ejemplos](WORKSHOP_THEORY.md).
+
 ## Teoria
 
-- [Servicios HTTP como borde](README.md#servicios-http-como-borde).
-- [Interceptores funcionales](README.md#interceptores-funcionales).
-- [HttpContext](README.md#httpcontext).
-- [Global error handler](README.md#global-error-handler).
-- [Analytics por strategies](README.md#analytics-por-strategies).
-- [Directiva de tracking](README.md#directiva-de-tracking).
+- [Servicios HTTP como borde](WORKSHOP_THEORY.md#servicios-http-como-borde).
+- [Interceptores funcionales](WORKSHOP_THEORY.md#interceptores-funcionales).
+- [HttpContext](WORKSHOP_THEORY.md#httpcontext).
+- [Global error handler](WORKSHOP_THEORY.md#global-error-handler).
+- [Analytics por strategies](WORKSHOP_THEORY.md#analytics-por-strategies).
+- [Directiva de tracking](WORKSHOP_THEORY.md#directiva-de-tracking).
 
 ## Estructura
 
