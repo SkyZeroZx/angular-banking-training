@@ -2,13 +2,18 @@
 
 Segundo corte de testing: requests HTTP, interceptores y normalizacion de respuestas.
 
+## Material
+
+- [Inicio local](README.md).
+- [Teoria y ejemplos](WORKSHOP_THEORY.md).
+
 ## Teoria
 
-- [HttpTestingController](README.md#httptestingcontroller).
-- [Tests de servicios](README.md#tests-de-servicios).
-- [Orden de providers HTTP](README.md#orden-de-providers-http).
-- [Interceptores](README.md#interceptores).
-- [HttpContext en tests](README.md#httpcontext-en-tests).
+- [HttpTestingController](WORKSHOP_THEORY.md#httptestingcontroller).
+- [Tests de servicios](WORKSHOP_THEORY.md#tests-de-servicios).
+- [Orden de providers HTTP](WORKSHOP_THEORY.md#orden-de-providers-http).
+- [Interceptores](WORKSHOP_THEORY.md#interceptores).
+- [HttpContext en tests](WORKSHOP_THEORY.md#httpcontext-en-tests).
 
 ## Estructura
 
