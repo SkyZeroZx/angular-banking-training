@@ -33,12 +33,12 @@
     },
     {
       "key": "auth_service_url",
-      "value": "http://localhost:8091",
+      "value": "http://localhost:8080",
       "type": "string"
     },
     {
       "key": "banking_service_url",
-      "value": "http://localhost:8090",
+      "value": "http://localhost:8080",
       "type": "string"
     },
     {
