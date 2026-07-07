@@ -21,11 +21,6 @@ req.flush(pagedResponse([...]));
 
 El test controla request y response sin servidor real.
 
-Mini ejercicio:
-
-1. Cambiar query params del service.
-2. Ver falla en expectativa.
-3. Ajustar test para el contrato nuevo.
 
 ## Ejemplo 2 - Tests CRUD de servicios
 
@@ -45,11 +40,6 @@ service.create(body).subscribe((response) => {
 
 Cada spec valida metodo HTTP, URL, body y transformacion minima.
 
-Mini ejercicio:
-
-1. Abrir `account.service.spec.ts`.
-2. Identificar POST, PUT, PATCH y DELETE.
-3. Verificar que cada request termina con `httpMock.verify()`.
 
 ## Ejemplo 3 - Orden de providers HTTP
 
@@ -69,11 +59,6 @@ providers: [
 
 `provideHttpClientTesting()` debe ir despues para reemplazar backend real por backend de test.
 
-Mini ejercicio:
-
-1. Invertir providers temporalmente.
-2. Correr spec.
-3. Restaurar orden correcto y explicar el fallo.
 
 ## Ejemplo 4 - Auth interceptor
 
@@ -89,11 +74,6 @@ expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
 
 El interceptor se testea con una request anonima y un `AuthService` fake.
 
-Mini ejercicio:
-
-1. Probar caso con token.
-2. Probar caso sin token.
-3. Confirmar que la request original no se muta sin clone.
 
 ## Ejemplo 5 - Error interceptor
 
@@ -109,11 +89,6 @@ req.flush({ message: 'Saldo no disponible' }, { status: 400, statusText: 'Bad Re
 
 El spec controla error HTTP y valida efectos: toast, redirect o rethrow.
 
-Mini ejercicio:
-
-1. Simular 401.
-2. Confirmar logout/redireccion.
-3. Simular 400 y confirmar toast.
 
 ## Ejemplo 6 - HttpContext en tests
 
@@ -132,8 +107,3 @@ http.get('/api/demo', {
 
 El test valida que el opt-out desactiva comportamiento transversal.
 
-Mini ejercicio:
-
-1. Enviar request con `SKIP_ERROR_INTERCEPTOR`.
-2. Simular error.
-3. Confirmar que no se muestra toast.
