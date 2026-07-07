@@ -16,6 +16,7 @@ import { ClientResponse } from '@core/interface';
 import { ClientService } from '@core/services/client/client.service';
 import { ToastService } from '@shared/ui/toast/toast.service';
 import { ButtonComponent } from '@shared/ui/button/button.component';
+import { ClickTrackingDirective } from '@shared/directives/click-tracking/click-tracking.directive';
 import { SkeletonComponent } from '@shared/ui/skeleton/skeleton.component';
 import { ClientFormComponent } from '../components/client-form.component';
 import { ControlErrorModule } from '@shared/ui/control-error/control-error.module';
@@ -31,6 +32,7 @@ import { IconComponent } from '@shared/ui/icon/icon.component';
     SkeletonComponent,
     RouterLink,
     ButtonComponent,
+    ClickTrackingDirective,
     ControlErrorModule,
     IconComponent,
   ],

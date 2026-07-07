@@ -11,6 +11,7 @@ import { ClientRequest } from '@core/interface';
 import { ClientService } from '@core/services/client/client.service';
 import { ToastService } from '@shared/ui/toast/toast.service';
 import { ButtonComponent } from '@shared/ui/button/button.component';
+import { ClickTrackingDirective } from '@shared/directives/click-tracking/click-tracking.directive';
 import { ClientFormComponent } from '../components/client-form.component';
 import { IconComponent } from '@shared/ui/icon/icon.component';
 
@@ -23,6 +24,7 @@ import { IconComponent } from '@shared/ui/icon/icon.component';
     ClientFormComponent,
     RouterLink,
     ButtonComponent,
+    ClickTrackingDirective,
     IconComponent,
   ],
   templateUrl: './client-create.component.html',

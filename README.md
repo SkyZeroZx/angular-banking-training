@@ -14,8 +14,7 @@ Este README queda para contexto, ejecucion local y validacion. Usa [WORKSHOP_STA
 | `workshop/02-ui-cva-forms`               | Angular 2 | UI propia, CVA, formularios, cuentas y movimientos     |
 | `workshop/03-http-errors-analytics`      | Angular 3 | Reportes, interceptores, error global, analytics       |
 | `workshop/04-testing-components-cva`     | Testing 1 | Helpers DOM, component tests, CVA tests                |
-| `workshop/05-testing-http-interceptors`  | Testing 2 | HttpTestingController, servicios, interceptores        |
-| `workshop/06-testing-router-integration` | Testing 3 | RouterTestingHarness, guards, flows de paginas         |
+| `workshop/05-testing-http-interceptors`  | Testing 2 | HttpTestingController, interceptores, RouterTestingHarness, guards y flows de paginas |
 
 ## Ejecucion Local
 
