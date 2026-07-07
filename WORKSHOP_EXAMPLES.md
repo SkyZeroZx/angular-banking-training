@@ -19,11 +19,6 @@ getReport(params: ReportParams) {
 
 El service conoce HTTP y normaliza respuesta. El componente trabaja con datos de UI.
 
-Mini ejercicio:
-
-1. Abrir pagina de reportes.
-2. Cambiar rango de fechas.
-3. Seguir flujo: form -> service -> normalizacion -> tabla.
 
 ## Ejemplo 2 - Interceptor de auth
 
@@ -43,11 +38,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
 El interceptor agrega headers sin ensuciar cada service.
 
-Mini ejercicio:
-
-1. Login.
-2. Abrir DevTools Network.
-3. Ver header `Authorization` en `/api/reportes`.
 
 ## Ejemplo 3 - HttpContext como opt-out
 
@@ -65,11 +55,6 @@ new HttpContext().set(SKIP_ERROR_INTERCEPTOR, true);
 
 `HttpContext` evita flags por string y permite decisiones transversales por request.
 
-Mini ejercicio:
-
-1. Buscar uso de `SKIP_ERROR_INTERCEPTOR`.
-2. Comparar request normal vs request con opt-out.
-3. Explicar por que no conviene usar headers internos.
 
 ## Ejemplo 4 - Error interceptor y toast
 
@@ -91,11 +76,6 @@ return next(req).pipe(
 
 El interceptor estandariza errores HTTP. El componente no repite parsing de errores.
 
-Mini ejercicio:
-
-1. Forzar endpoint con token invalido.
-2. Ver toast y redireccion si aplica.
-3. Identificar donde se conserva el error original.
 
 ## Ejemplo 5 - GlobalErrorHandler
 
@@ -112,11 +92,6 @@ providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandler }];
 
 `GlobalErrorHandler` cubre errores fuera del flujo HTTP: callbacks, eventos, errores de render o promises no manejadas.
 
-Mini ejercicio:
-
-1. Lanzar un error desde un boton temporal.
-2. Confirmar que no pasa por interceptor HTTP.
-3. Revisar salida del handler global.
 
 ## Ejemplo 6 - Analytics con strategies
 
@@ -135,8 +110,3 @@ track(event: AnalyticsEvent): void;
 
 La directiva dispara eventos. El adapter decide si usa consola, gtag u otra salida.
 
-Mini ejercicio:
-
-1. Agregar tracking a un boton.
-2. Click en la UI.
-3. Ver evento en consola sin acoplar componente a vendor.
