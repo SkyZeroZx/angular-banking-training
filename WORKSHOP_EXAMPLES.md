@@ -19,11 +19,6 @@ await TestBed.configureTestingModule({
 
 El spec monta componente real con providers falsos en los bordes.
 
-Mini ejercicio:
-
-1. Cambiar respuesta fake de login.
-2. Ejecutar spec.
-3. Validar navegacion esperada.
 
 ## Ejemplo 2 - RouterTestingHarness
 
@@ -41,11 +36,6 @@ await harness.navigateByUrl('/clientes/client-001/editar', ClientEditComponent);
 
 El harness prueba la navegacion completa, no solo el metodo del componente.
 
-Mini ejercicio:
-
-1. Cambiar URL de navegacion.
-2. Ver que el componente esperado cambia.
-3. Restaurar ruta correcta.
 
 ## Ejemplo 3 - Guards por navegacion
 
@@ -62,11 +52,6 @@ expect(TestBed.inject(Router).url).toBe('/login');
 
 El guard se valida por resultado observable para el usuario: ruta final.
 
-Mini ejercicio:
-
-1. Probar usuario autenticado.
-2. Probar usuario anonimo.
-3. Confirmar que no se llama manualmente al guard.
 
 ## Ejemplo 4 - Route params y component input binding
 
@@ -84,11 +69,6 @@ readonly clienteId = input.required<string>();
 
 El test navega a una URL con params. Angular entrega esos params como inputs.
 
-Mini ejercicio:
-
-1. Navegar en spec con `client-001`.
-2. Verificar llamada al service con ese id.
-3. Cambiar id y observar falla esperada.
 
 ## Ejemplo 5 - Page specs
 
@@ -107,11 +87,6 @@ expect(screen.text('Jose Lema')).toBeTruthy();
 
 Page specs verifican flujo de pagina: carga, render, filtros y acciones principales.
 
-Mini ejercicio:
-
-1. Cambiar fixture de respuesta.
-2. Confirmar DOM renderizado.
-3. Simular click de accion primaria.
 
 ## Ejemplo 6 - Testing boundaries
 
@@ -130,8 +105,3 @@ providers: [{ provide: AuthService, useValue: authServiceFake }];
 
 Se prueban integraciones internas de Angular, pero se falsifican servicios externos o persistencia.
 
-Mini ejercicio:
-
-1. Cambiar usuario fake del header.
-2. Confirmar texto renderizado.
-3. Simular logout y verificar interaccion.
