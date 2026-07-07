@@ -6,6 +6,7 @@ Esta sesion inicia testing Angular con componentes reales, template renderizado,
 
 - [Inicio local](README.md).
 - [Temario y recorrido](WORKSHOP_STAGE.md).
+- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria Angular Testing
 
