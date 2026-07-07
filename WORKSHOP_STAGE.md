@@ -6,6 +6,7 @@ Tercer corte: la app funcional queda completa con reportes y capa transversal.
 
 - [Inicio local](README.md).
 - [Teoria y ejemplos](WORKSHOP_THEORY.md).
+- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria
 

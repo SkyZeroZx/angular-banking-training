@@ -6,6 +6,7 @@ Esta sesion cierra la app funcional con reportes, interceptores, manejo global d
 
 - [Inicio local](README.md).
 - [Temario y recorrido](WORKSHOP_STAGE.md).
+- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria Angular
 
