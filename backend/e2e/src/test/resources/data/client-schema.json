@@ -1,8 +1,0 @@
-{
-  "clienteId": "#string",
-  "nombre": "#string",
-  "identificacion": "#string",
-  "direccion": "#string",
-  "telefono": "#string",
-  "estado": "#boolean"
-}
