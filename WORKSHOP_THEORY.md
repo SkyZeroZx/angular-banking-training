@@ -6,6 +6,7 @@ Esta sesion prueba contratos HTTP sin backend real: servicios, params, headers, 
 
 - [Inicio local](README.md).
 - [Temario y recorrido](WORKSHOP_STAGE.md).
+- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria Angular Testing
 

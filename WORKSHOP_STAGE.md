@@ -6,6 +6,7 @@ Segundo corte de testing: requests HTTP, interceptores y normalizacion de respue
 
 - [Inicio local](README.md).
 - [Teoria y ejemplos](WORKSHOP_THEORY.md).
+- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria
 
