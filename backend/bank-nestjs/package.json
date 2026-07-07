@@ -5,10 +5,14 @@
   "description": "Backend Bank NestJS monolith using an in-memory database.",
   "scripts": {
     "build": "nest build",
+    "deploy:worker": "wrangler deploy",
+    "dev:worker": "wrangler dev",
+    "dry-run:worker": "wrangler deploy --dry-run",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:prod": "node dist/main.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "types:worker": "wrangler types"
   },
   "dependencies": {
     "@fastify/cors": "^11.2.0",
@@ -22,7 +26,9 @@
     "rxjs": "^7.8.2"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260707.1",
     "@nestjs/cli": "^11.0.23",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "wrangler": "^4.108.0"
   }
 }

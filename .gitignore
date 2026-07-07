@@ -27,6 +27,7 @@ logs/
 node_modules/
 dist/
 coverage/
+.wrangler/
 
 *.pem
 *.key
