@@ -18,11 +18,6 @@ await TestBed.configureTestingModule({
 
 En standalone components el componente se importa directamente. No hay `declarations`.
 
-Mini ejercicio:
-
-1. Abrir spec del button.
-2. Ubicar `TestBed`.
-3. Cambiar un input y correr solo ese spec.
 
 ## Ejemplo 2 - Testing por DOM
 
@@ -40,11 +35,6 @@ expect(rows.length).toBe(2);
 
 El test valida comportamiento visible, no detalles privados del componente.
 
-Mini ejercicio:
-
-1. Cambiar fixture de filas.
-2. Confirmar que el spec falla por DOM esperado.
-3. Reparar expectativa sin leer propiedades privadas.
 
 ## Ejemplo 3 - Host dummy para CVA
 
@@ -68,11 +58,6 @@ class HostComponent {
 
 El host prueba el CVA desde la API publica de Angular Forms.
 
-Mini ejercicio:
-
-1. Setear valor desde `FormControl`.
-2. Ver que el input DOM cambia.
-3. Escribir en DOM y confirmar que el control recibe valor.
 
 ## Ejemplo 4 - Contrato CVA completo
 
@@ -87,11 +72,6 @@ Checklist de contrato:
 - `registerOnTouched` marca touched.
 - `setDisabledState` bloquea interaccion.
 
-Mini ejercicio:
-
-1. Deshabilitar `FormControl`.
-2. Confirmar atributo disabled.
-3. Habilitar y probar escritura de usuario.
 
 ## Ejemplo 5 - Select remoto con doble de servicio
 
@@ -110,11 +90,6 @@ const clientService = {
 
 El componente se prueba con un doble local. No se usa HTTP real en tests de componente.
 
-Mini ejercicio:
-
-1. Cambiar respuesta del doble.
-2. Simular busqueda.
-3. Confirmar opciones renderizadas.
 
 ## Ejemplo 6 - UI compartida
 
@@ -132,8 +107,3 @@ expect(nextButton.disabled).toBe(true);
 
 UI compartida se testea por estados visibles y eventos emitidos, porque otros features dependen de ese contrato.
 
-Mini ejercicio:
-
-1. Cambiar pagina actual del paginator.
-2. Ver botones habilitados/deshabilitados.
-3. Confirmar evento emitido al click.
