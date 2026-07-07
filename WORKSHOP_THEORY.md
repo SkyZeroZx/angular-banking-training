@@ -6,6 +6,7 @@ Esta sesion cierra la suite frontend con integration tests de router, guards, pa
 
 - [Inicio local](README.md).
 - [Temario y recorrido](WORKSHOP_STAGE.md).
+- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria Angular Testing
 

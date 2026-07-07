@@ -6,6 +6,7 @@ Corte final: suite completa con guards, rutas, pages y layout.
 
 - [Inicio local](README.md).
 - [Teoria y ejemplos](WORKSHOP_THEORY.md).
+- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria
 
