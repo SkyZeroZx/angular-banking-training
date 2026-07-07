@@ -24,6 +24,10 @@ nbproject/
 *.log
 logs/
 
+node_modules/
+dist/
+coverage/
+
 *.pem
 *.key
 *.p12
