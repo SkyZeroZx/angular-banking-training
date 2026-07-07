@@ -13,14 +13,13 @@ Esta rama 01 incluye dos labs didacticos aislados. No son parte del dominio banc
 
 ## Ramas
 
-| Rama                                     | Sesion    | Incremento real                                        |
-| ---------------------------------------- | --------- | ------------------------------------------------------ |
-| `workshop/01-shell-routing-signals`      | Angular 1 | Shell, login, rutas lazy, guards, clientes con signals |
-| `workshop/02-ui-cva-forms`               | Angular 2 | UI propia, CVA, formularios, cuentas y movimientos     |
-| `workshop/03-http-errors-analytics`      | Angular 3 | Reportes, interceptores, error global, analytics       |
-| `workshop/04-testing-components-cva`     | Testing 1 | Helpers DOM, component tests, CVA tests                |
-| `workshop/05-testing-http-interceptors`  | Testing 2 | HttpTestingController, servicios, interceptores        |
-| `workshop/06-testing-router-integration` | Testing 3 | RouterTestingHarness, guards, flows de paginas         |
+| Rama                                    | Sesion    | Incremento real                                                      |
+| --------------------------------------- | --------- | -------------------------------------------------------------------- |
+| `workshop/01-shell-routing-signals`     | Angular 1 | Shell, login, rutas lazy, guards, clientes con signals               |
+| `workshop/02-ui-cva-forms`              | Angular 2 | UI propia, CVA, formularios, cuentas y movimientos                   |
+| `workshop/03-http-errors-analytics`     | Angular 3 | Reportes, interceptores, error global, analytics                     |
+| `workshop/04-testing-components-cva`    | Testing 1 | Helpers DOM, component tests, CVA tests                              |
+| `workshop/05-testing-http-interceptors` | Testing 2 | HTTP, interceptores, RouterTestingHarness, guards y flows de paginas |
 
 ## Ejecucion Local
 
