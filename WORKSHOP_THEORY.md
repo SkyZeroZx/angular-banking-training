@@ -6,6 +6,7 @@ Esta sesion presenta la base moderna de Angular: aplicacion standalone, routing 
 
 - [Inicio local](README.md).
 - [Temario y recorrido](WORKSHOP_STAGE.md).
+- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria Angular
 

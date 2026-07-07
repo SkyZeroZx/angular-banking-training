@@ -6,6 +6,7 @@ Primer corte ejecutable: login, shell autenticado, clientes read-only y labs ais
 
 - [Inicio local](README.md).
 - [Teoria y ejemplos](WORKSHOP_THEORY.md).
+- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria
 
