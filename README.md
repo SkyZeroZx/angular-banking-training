@@ -19,21 +19,12 @@ Este README queda para contexto, ejecucion local y validacion. Usa [WORKSHOP_STA
 
 ## Ejecucion Local
 
-Backend local con H2:
+Backend local NestJS con BD InMemory:
 
 ```bash
-cd backend
-mvn -pl auth-service spring-boot:run
-```
-
-```bash
-cd backend
-mvn -pl banking-service spring-boot:run
-```
-
-```bash
-cd backend
-mvn -pl api-gateway spring-boot:run
+cd backend/bank-nestjs
+npm install
+npm run start:dev
 ```
 
 Frontend:
@@ -63,18 +54,15 @@ npm run build
 Backend:
 
 ```bash
-cd backend
-mvn test
+cd backend/bank-nestjs
+npm run typecheck
+npm run build
 ```
 
 ## Servicios
 
-| Servicio        | URL                                |
-| --------------- | ---------------------------------- |
-| API Gateway     | `http://localhost:8080`            |
-| Banking Service | `http://localhost:8090`            |
-| Auth Service    | `http://localhost:8091`            |
-| H2 Auth         | `http://localhost:8091/h2-console` |
-| H2 Banking      | `http://localhost:8090/h2-console` |
+| Servicio            | URL                     |
+| ------------------- | ----------------------- |
+| Backend Bank NestJS | `http://localhost:8080` |
 
-H2 usa usuario `sa` y password vacio.
+La BD es InMemory y se reinicia al levantar el proceso.
