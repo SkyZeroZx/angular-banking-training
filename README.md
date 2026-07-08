@@ -4,7 +4,7 @@ Repositorio full-stack para capacitacion Angular. Cada rama `workshop/*` es un s
 
 ## Rama Actual
 
-Este README queda para contexto, ejecucion local y validacion. Usa [WORKSHOP_STAGE.md](WORKSHOP_STAGE.md) para temario/recorrido y [WORKSHOP_THEORY.md](WORKSHOP_THEORY.md) para teoria/ejemplos.
+Este README queda para contexto, ejecucion local y validacion. Usa [WORKSHOP_STAGE.md](WORKSHOP_STAGE.md) para temario/recorrido y [WORKSHOP_THEORY.md](WORKSHOP_THEORY.md) para teoria.
 
 Esta rama 01 incluye dos labs didacticos aislados. No son parte del dominio bancario; existen para explicar Angular moderno antes de construir features mas grandes.
 

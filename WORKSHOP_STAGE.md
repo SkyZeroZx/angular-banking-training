@@ -6,7 +6,6 @@ Primer corte ejecutable: login, shell autenticado, clientes read-only y labs ais
 
 - [Inicio local](README.md).
 - [Teoria y ejemplos](WORKSHOP_THEORY.md).
-- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria
 
@@ -29,6 +28,11 @@ Primer corte ejecutable: login, shell autenticado, clientes read-only y labs ais
 - `pages/login`, `layout/content`, `pages/clients`.
 - `app/workshop/change-detection`.
 - `app/workshop/routing`.
+- `app/workshop/router-config`.
+- `app/workshop/can-match-feature-gating`.
+- `app/workshop/lifecycle-render-cleanup`.
+- `app/workshop/render-callbacks`.
+- `app/workshop/resolver-redirect-command`.
 
 ## Recorrido
 
@@ -37,8 +41,11 @@ Primer corte ejecutable: login, shell autenticado, clientes read-only y labs ais
 3. Rutas lazy, guards funcionales y layout protegido en `app.routes.ts`.
 4. Estado reactivo local en `clients.component.ts`.
 5. Lab `/workshop/change-detection`: signal, propiedad normal y `markForCheck`.
-6. Lifecycle hooks modernos: inicializacion, actualizacion, render callbacks y cleanup.
-7. Lab `/workshop/routing`: rutas hijas, redirect local, `RedirectFunction`, resolver, wildcard y component input binding.
+6. Lab `/workshop/router-features`: `withRouterConfig`, preloading, scroll y query params merge.
+7. Lab `/workshop/can-match`: feature gating con ruta fallback visible.
+8. Lab `/workshop/lifecycle`: inicializacion, actualizacion, render callbacks y cleanup.
+9. Lab `/workshop/resolver-redirect`: resolver con `RedirectCommand`.
+10. Lab `/workshop/routing`: rutas hijas, redirect local, `RedirectFunction`, resolver, wildcard y component input binding.
 
 ## Ampliacion oficial
 

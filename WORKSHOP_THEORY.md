@@ -6,7 +6,6 @@ Esta sesion presenta la base moderna de Angular: aplicacion standalone, routing 
 
 - [Inicio local](README.md).
 - [Temario y recorrido](WORKSHOP_STAGE.md).
-- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria Angular
 
@@ -405,6 +404,21 @@ En esta rama se activa `scrollPositionRestoration`. `withPreloading` queda como 
 
 - `/workshop/change-detection`: compara signal, propiedad normal, `markForCheck` y `detectChanges`.
 - `/workshop/routing`: muestra rutas hijas, redirect local, `RedirectFunction`, resolver, wildcard local y component input binding.
+- `/workshop/router-features`: valida `withRouterConfig`, `withPreloading` y `withInMemoryScrolling` desde `app.config.ts`.
+- `/workshop/can-match`: muestra `canMatch` con feature flag y ruta fallback con el mismo path.
+- `/workshop/lifecycle`: muestra hooks clasicos, `afterNextRender`, `afterRenderEffect`, `DestroyRef` y `takeUntilDestroyed`.
+- `/workshop/resolver-redirect`: muestra resolver con `RedirectCommand` cuando falta un dato critico.
+
+## Archivos demo complementarios
+
+- `frontend/banking-front/src/app/app.config.ts`
+- `frontend/banking-front/src/app/workshop/router-config/router-features.component.ts`
+- `frontend/banking-front/src/app/workshop/can-match-feature-gating/can-match-lab.component.ts`
+- `frontend/banking-front/src/app/workshop/can-match-feature-gating/accounts-feature.routes.ts`
+- `frontend/banking-front/src/app/workshop/lifecycle-render-cleanup/lifecycle-lab.component.ts`
+- `frontend/banking-front/src/app/workshop/render-callbacks/chart-host.component.ts`
+- `frontend/banking-front/src/app/workshop/resolver-redirect-command/resolver-lab.component.ts`
+- `frontend/banking-front/src/app/workshop/resolver-redirect-command/client.resolver.ts`
 
 ## Documentacion oficial
 

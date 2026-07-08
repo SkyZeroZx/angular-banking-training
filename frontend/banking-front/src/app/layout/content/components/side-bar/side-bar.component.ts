@@ -13,5 +13,9 @@ export class SideBarComponent {
     { path: '/clientes', label: 'Clientes' },
     { path: '/workshop/change-detection', label: 'Change detection' },
     { path: '/workshop/routing', label: 'Routing lab' },
+    { path: '/workshop/router-features', label: 'Router features' },
+    { path: '/workshop/can-match', label: 'CanMatch' },
+    { path: '/workshop/lifecycle', label: 'Lifecycle' },
+    { path: '/workshop/resolver-redirect', label: 'Resolver redirect' },
   ];
 }

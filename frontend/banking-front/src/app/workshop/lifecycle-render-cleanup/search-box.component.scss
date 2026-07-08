@@ -1,0 +1,17 @@
+.search-box {
+  padding: 1rem;
+  border: 1px solid #d8dee4;
+  border-radius: 8px;
+  background: #fff;
+}
+
+:host(.ready) input {
+  outline: 2px solid #1f5eff;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+}

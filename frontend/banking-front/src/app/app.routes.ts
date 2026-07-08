@@ -1,5 +1,7 @@
 import { Route } from '@angular/router';
 import { authGuard, publicGuard } from '@core/guards/auth.guard';
+import { accountRoutes } from '@app/workshop/can-match-feature-gating/accounts-feature.routes';
+import { clientRoutes } from '@app/workshop/resolver-redirect-command/client.routes';
 import { routingDemoNameResolver } from '@app/workshop/routing/routing-demo.resolver';
 import {
   ROUTING_DEMO_DEFAULT_ID,
@@ -38,6 +40,40 @@ export const appRoutes: Route[] = [
           import('@app/workshop/change-detection/change-detection-lab.component').then(
             (m) => m.ChangeDetectionLabComponent,
           ),
+      },
+      {
+        path: 'workshop/router-features',
+        title: 'Workshop 01 | Router Features',
+        loadComponent: () =>
+          import('@app/workshop/router-config/router-features.component').then(
+            (m) => m.RouterFeaturesComponent,
+          ),
+      },
+      {
+        path: 'workshop/can-match',
+        title: 'Workshop 01 | CanMatch',
+        loadComponent: () =>
+          import('@app/workshop/can-match-feature-gating/can-match-lab.component').then(
+            (m) => m.CanMatchLabComponent,
+          ),
+        children: accountRoutes,
+      },
+      {
+        path: 'workshop/lifecycle',
+        title: 'Workshop 01 | Lifecycle',
+        loadComponent: () =>
+          import('@app/workshop/lifecycle-render-cleanup/lifecycle-lab.component').then(
+            (m) => m.LifecycleLabComponent,
+          ),
+      },
+      {
+        path: 'workshop/resolver-redirect',
+        title: 'Workshop 01 | Resolver Redirect',
+        loadComponent: () =>
+          import('@app/workshop/resolver-redirect-command/resolver-lab.component').then(
+            (m) => m.ResolverLabComponent,
+          ),
+        children: clientRoutes,
       },
       {
         path: 'workshop/routing',
