@@ -6,7 +6,6 @@ Primer corte de testing: componentes compartidos, CVA y directivas pequenas.
 
 - [Inicio local](README.md).
 - [Teoria y ejemplos](WORKSHOP_THEORY.md).
-- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria
 
