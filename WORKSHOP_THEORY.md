@@ -6,7 +6,6 @@ Esta sesion convierte pantallas simples en una aplicacion con UI reusable, formu
 
 - [Inicio local](README.md).
 - [Temario y recorrido](WORKSHOP_STAGE.md).
-- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria Angular
 
