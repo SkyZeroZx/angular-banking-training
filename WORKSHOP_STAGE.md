@@ -6,7 +6,6 @@ Sesion fusionada: testing HTTP/interceptores y testing de router/integracion Ang
 
 - [Inicio local](README.md).
 - [Teoria y ejemplos](WORKSHOP_THEORY.md).
-- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria
 

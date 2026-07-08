@@ -6,7 +6,6 @@ Esta sesion fusiona el contenido de testing HTTP/interceptores con integration t
 
 - [Inicio local](README.md).
 - [Temario y recorrido](WORKSHOP_STAGE.md).
-- [Ejemplos guiados](WORKSHOP_EXAMPLES.md).
 
 ## Teoria Angular Testing
 
